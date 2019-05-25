@@ -1,0 +1,49 @@
+server:
+  port: 80
+spring:
+  thymeleaf:
+    cache: false
+    prefix: classpath:/templates/
+    suffix: .html
+    mode: HTML
+    encoding: UTF-8
+    servlet:
+      content-type: text/html
+  #热部署生效
+#  devtools:
+#    restart:
+#      enabled: true
+  #编码格式
+  http:
+    encoding:
+      force: true
+      charset: UTF-8
+      enabled: true
+  tomcat:
+    uri-encoding: UTF-8
+  #h2数据库
+  datasource:
+    url: jdbc:h2:file:./client-side/src/main/resources/db/test01;MODE=MySQL;AUTO_SERVER=TRUE;DB_CLOSE_DELAY=-1      #存到本地文件
+  #datasource.url=jdbc:h2:mem:test 存到内存中
+  #datasource.url=jdbc:h2:mem:test;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+    driverClassName: org.h2.Driver
+    username: root
+    password: 123456
+  #spring.datasource.schema=classpath:db/schema.sql 执行数据脚本
+  #resources/db/schema.sql
+  #spring.datasource.data=classpath:db/data.sql
+  #resources/db/data.sql
+  h2:
+    console:
+      settings:
+        web-allow-others: true
+    path: /h2
+    enabled: true
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    generate-ddl: true
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+    platform: h2-console
+    open-in-view: true

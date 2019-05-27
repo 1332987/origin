@@ -15,14 +15,18 @@ public class User {
     private String username;
 
     @Column
-    private int age;
+    private String password;
+
+    @Column
+    private String type;
 
 
     protected User() {
     }
 
-    public User(String username, int age) {
+    public User(String username, String password ,String type) {
         this.username = username;
-        this.age = age;
+        this.password = password;
+        this.type = type;
     }
 }

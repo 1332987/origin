@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="/common/template :: header(~{::title},~{::link},~{::style})">
+    <title>登陆</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/layui/css/layui.css}"/>
+</head>
+<body>
+<!--<div class="layui-fluid">-->
+<!--    <div class="layui-col-md9">-->
+<!--        <form class="layui-form" th:actio="@{/indexs}">-->
+<!--            <fieldset>-->
+<!--                <legend>Personalia:</legend>-->
+<!--                <div class="layui-form-item">-->
+<!--                    <label class="layui-form-label">输入框</label>-->
+<!--                    <div class="layui-input-block">-->
+<!--                        <input type="text" name="title" required  lay-verify="required" placeholder="请输入标题" autocomplete="off" class="layui-input">-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <div class="layui-form-item">-->
+<!--                    <label class="layui-form-label">密码框</label>-->
+<!--                    <div class="layui-input-inline">-->
+<!--                        <input type="password" name="password" required lay-verify="required" placeholder="请输入密码" autocomplete="off" class="layui-input">-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </fieldset>-->
+<!--        </form>-->
+<!--    </div>-->
+<!--</div>-->
+
+<script th:replace="/common/template :: script"></script>
+<script th:src="@{/js/jquery.js}" type="text/javascript" charset="utf-8"></script>
+</body>
+</html>

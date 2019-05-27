@@ -1,4 +1,4 @@
-package com.youwan;
+package com.youwan.config;
 
 import javafx.geometry.HPos;
 import javafx.geometry.VPos;
@@ -18,7 +18,7 @@ public class Browser extends Region {
         //apply the styles
         getStyleClass().add("browser");
         // load the web page
-        webEngine.load("http://localhost/index");
+        webEngine.load("http://localhost");
         //add the web view to the scene
         getChildren().add(browser);
 

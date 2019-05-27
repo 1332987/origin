@@ -1,6 +1,6 @@
 package com.youwan;
 
-import javafx.application.Application;
+import com.youwan.config.Browser;
 import javafx.scene.Scene;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
@@ -8,12 +8,12 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class Chapter11Application extends Application {
+public class Application extends javafx.application.Application {
+//public class Application {
 
 
     public static void main(String[] args) {
-        SpringApplication.run(Chapter11Application.class, args);
-
+        SpringApplication.run(Application.class, args);
         launch(args);
     }
 
@@ -22,7 +22,7 @@ public class Chapter11Application extends Application {
     public void start(Stage stage) {
         Scene scene;
         // create the scene
-        stage.setTitle("Web View");
+        stage.setTitle("劳务实名制管理系统");
 
         scene = new Scene(new Browser(), 900, 600, Color.web("#666970"));
         stage.setScene(scene);

@@ -10,14 +10,16 @@
 
     <meta charset="utf-8">
     <meta name="renderer" content="webkit">
-    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="description" content="劳务实名制管理系统"/>
     <meta name="keywords" content="劳务实名制管理系统, 劳务, 实名制, 管理, xit"/>
 
     <link rel="shortcut icon" th:href="@{/favicon.ico}" type="image/x-icon">
-    <link rel="stylesheet" type="text/css" th:href="@{layui/css/layui.css}"/>
-    <link rel="stylesheet" type="text/css" th:href="@{css/admin.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/layui/css/layui.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/admin.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/js/module/dialog.css}"/>
 
     <th:block th:if="${link != null}">
         <th:block th:replace="${link}"></th:block>
@@ -29,9 +31,9 @@
 </head>
 <body>
 <th:block th:fragment="script">
-    <script  th:src="@{layui/layui.js}" type="text/javascript" charset="utf-8"></script>
-    <script  th:src="@{js/common.js}" type="text/javascript" charset="utf-8"></script>
-    <script  th:src="@{js/main.js}" type="text/javascript" charset="utf-8"></script>
+    <script th:src="@{/layui/layui.js}" type="text/javascript" charset="utf-8"></script>
+    <script th:src="@{/js/common.js}" type="text/javascript" charset="utf-8"></script>
+    <script th:src="@{/js/main.js}" type="text/javascript" charset="utf-8"></script>
 </th:block>
 </body>
 </html>

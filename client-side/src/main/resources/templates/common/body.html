@@ -1,48 +1,68 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<!-- 分页模块 -->
+<!-- 菜单 -->
 <th:block th:fragment="menu">
     <div class="main-layout-side">
         <div class="m-logo">
         </div>
         <ul class="layui-nav layui-nav-tree" lay-filter="leftNav">
             <li class="layui-nav-item layui-nav-itemed">
-                <a href="javascript:;"><i class="iconfont">&#xe607;</i>菜单管理</a>
+                <a th:href="@{/index}"><i class="iconfont">&#xe607;</i>首页</a>
+            </li>
+            <li class="layui-nav-item">
+                <a href="javascript:;"><i class="iconfont">&#xe608;</i>项目管理</a>
                 <dl class="layui-nav-child">
-                    <dd><a href="javascript:;" data-url="menu1.html" data-id='1' data-text="后台菜单"><span class="l-line"></span>后台菜单</a></dd>
-                    <dd><a href="javascript:;" data-url="menu2.html" data-id='2' data-text="前台菜单"><span class="l-line"></span>前台菜单</a></dd>
+                    <dd><a href="javascript:;" th:data-url="@{project/info}" data-id='1' data-text="项目信息管理"><span class="l-line"></span>项目信息管理</a></dd>
+                    <dd><a href="javascript:;" th:data-url="@{project/subpackage}" data-id='2' data-text="分包信息管理"><span class="l-line"></span>分包信息管理</a></dd>
                 </dl>
             </li>
             <li class="layui-nav-item">
-                <a href="javascript:;"><i class="iconfont">&#xe608;</i>内容管理</a>
+                <a href="javascript:;"><i class="iconfont">&#xe608;</i>人员管理</a>
                 <dl class="layui-nav-child">
-                    <dd><a href="javascript:;" data-url="article-list.html" data-id='3' data-text="文章管理"><span class="l-line"></span>文章管理</a></dd>
-                    <dd><a href="javascript:;" data-url="danye-list.html" data-id='9' data-text="单页管理"><span class="l-line"></span>单页管理</a></dd>
+                    <dd><a href="javascript:;" data-url="/crew/dictionaries.html" data-id='3' data-text="字典管理"><span class="l-line"></span>字典管理</a></dd>
+                    <dd><a href="javascript:;" data-url="/crew/crewManage.html" data-id='4' data-text="人员管理"><span class="l-line"></span>人员管理</a></dd>
                 </dl>
             </li>
             <li class="layui-nav-item">
-                <a href="javascript:;"><i class="iconfont">&#xe604;</i>推荐位管理</a>
+                <a href="javascript:;"><i class="iconfont">&#xe60a;</i>设备管理</a>
+                <dl class="layui-nav-child">
+                    <dd><a href="javascript:;" th:data-url="@{/login}" data-id='5' data-text="设备管理"><span class="l-line"></span>设备管理</a></dd>
+                </dl>
             </li>
             <li class="layui-nav-item">
-                <a href="javascript:;"><i class="iconfont">&#xe60c;</i>友情链接</a>
+                <a href="javascript:;" ><i class="iconfont">&#xe603;</i>门禁管理</a>
+                <dl class="layui-nav-child">
+                    <dd><a href="javascript:;" th:data-url="@{/access/aisle}" data-id='6' data-text="通道权限"><span class="l-line"></span>通道权限</a></dd>
+                    <dd><a href="javascript:;" th:data-url="@{/access/record}" data-id='7' data-text="记录查询"><span class="l-line"></span>记录查询</a></dd>
+                </dl>
             </li>
             <li class="layui-nav-item">
-                <a href="javascript:;"><i class="iconfont">&#xe60a;</i>RBAC</a>
+                <a href="javascript:;"><i class="iconfont">&#xe60d;</i>考勤管理</a>
+                <dl class="layui-nav-child">
+                    <dd><a href="javascript:;" th:data-url="@{/salary/scheduling}" data-id='8' data-text="班次/排班"><span class="l-line"></span>班次/排班</a></dd>
+                    <dd><a href="javascript:;" th:data-url="@{/salary/person}" data-id='9' data-text="个人考勤报表"><span class="l-line"></span>个人考勤报表</a></dd>
+                    <dd><a href="javascript:;" th:data-url="@{/salary/class}" data-id='10' data-text="班组考勤报表"><span class="l-line"></span>班组考勤报表</a></dd>
+                </dl>
             </li>
             <li class="layui-nav-item">
-                <a href="javascript:;" data-url="email.html" data-id='4' data-text="邮件系统"><i class="iconfont">&#xe603;</i>邮件系统</a>
+                <a href="javascript:;"><i class="iconfont">&#xe600;</i>报表中心</a>
             </li>
             <li class="layui-nav-item">
-                <a href="javascript:;"><i class="iconfont">&#xe60d;</i>生成静态</a>
+                <a href="javascript:;" ><i class="iconfont">&#xe606;</i>访客管理</a>
+                <dl class="layui-nav-child">
+                    <dd><a href="javascript:;" th:data-url="@{/caller/register}" data-id='11' data-text="来访登记"><span class="l-line"></span>来访登记</a></dd>
+                </dl>
             </li>
             <li class="layui-nav-item">
-                <a href="javascript:;"><i class="iconfont">&#xe600;</i>备份管理</a>
-            </li>
-            <li class="layui-nav-item">
-                <a href="javascript:;" data-url="admin-info.html" data-id='5' data-text="个人信息"><i class="iconfont">&#xe606;</i>个人信息</a>
-            </li>
-            <li class="layui-nav-item">
-                <a href="javascript:;" data-url="system.html" data-id='6' data-text="系统设置"><i class="iconfont">&#xe60b;</i>系统设置</a>
+                <a href="javascript:;"><i class="iconfont">&#xe60b;</i>系统设置</a>
+                <dl class="layui-nav-child">
+                    <dd><a href="javascript:;" th:data-url="@{/system/cloud}" data-id='12' data-text="云端同步"><span class="l-line"></span>云端同步</a></dd>
+                    <dd><a href="javascript:;" th:data-url="@{/system/data}" data-id='13' data-text="数据维护"><span class="l-line"></span>数据维护</a></dd>
+                    <dd><a href="javascript:;" th:data-url="@{/system/user}" data-id='14' data-text="用户管理"><span class="l-line"></span>用户管理</a></dd>
+                    <dd><a href="javascript:;" th:data-url="@{/system/logs}" data-id='15' data-text="操作日志"><span class="l-line"></span>操作日志</a></dd>
+                    <dd><a href="javascript:;" th:data-url="@{/system/help}" data-id='16' data-text="帮助"><span class="l-line"></span>帮助</a></dd>
+                    <dd><a href="javascript:;" th:data-url="@{/system/topic}" data-id='17' data-text="关于"><span class="l-line"></span>关于</a></dd>
+                </dl>
             </li>
         </ul>
     </div>
@@ -56,11 +76,11 @@
             </a>
         </div>
         <ul class="layui-nav" lay-filter="rightNav">
-            <li class="layui-nav-item"><a href="javascript:;" data-url="email.html" data-id='4' data-text="邮件系统"><i class="iconfont">&#xe603;</i></a></li>
+            <li class="layui-nav-item"><a href="javascript:;" data-url="email.html" data-id='4' data-text="邮件"><i class="iconfont">&#xe603;</i></a></li>
             <li class="layui-nav-item">
                 <a href="javascript:;" data-url="admin-info.html" data-id='5' data-text="个人信息">超级管理员</a>
             </li>
-            <li class="layui-nav-item"><a href="javascript:;">退出</a></li>
+            <li class="layui-nav-item"><a th:href="login">退出</a></li>
         </ul>
     </div>
 </th:block>

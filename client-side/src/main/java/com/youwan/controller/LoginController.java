@@ -24,13 +24,14 @@ public class LoginController {
 
     @RequestMapping("indexs")
     @ResponseBody
-    public String indexs(Model model, String title, String password) {
-        User use = userDao.findByUsername(title);
-        log.info("password" + StringUtils.equals(password, use.getPassword()));
+    public String indexs(Model model, String username, String password) {
+        User use = userDao.findByUsername(username);
         if (use == null)
             return "账号错误";
         else if (!StringUtils.equals(password, use.getPassword()))
             return "密码错误";
+
+        log.info("password" + StringUtils.equals(password, use.getPassword()));
         return "登陆成功";
     }
     @RequestMapping("index")

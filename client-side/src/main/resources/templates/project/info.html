@@ -1,34 +1,199 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-
 <head th:replace="/common/template :: header(~{::title},~{::link},~{::style})">
-    <title>登陆</title>
-    <link rel="stylesheet" type="text/css" th:href="@{/layui/css/layui.css}"/>
+    <!-- Morris -->
+    <link th:href="@{/css/plugins/morris/morris-0.4.3.min.css}" rel="stylesheet">
 </head>
-<body>
-<!--<div class="layui-fluid">-->
-<!--    <div class="layui-col-md9">-->
-<!--        <form class="layui-form" th:actio="@{/indexs}">-->
-<!--            <fieldset>-->
-<!--                <legend>Personalia:</legend>-->
-<!--                <div class="layui-form-item">-->
-<!--                    <label class="layui-form-label">输入框</label>-->
-<!--                    <div class="layui-input-block">-->
-<!--                        <input type="text" name="title" required  lay-verify="required" placeholder="请输入标题" autocomplete="off" class="layui-input">-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--                <div class="layui-form-item">-->
-<!--                    <label class="layui-form-label">密码框</label>-->
-<!--                    <div class="layui-input-inline">-->
-<!--                        <input type="password" name="password" required lay-verify="required" placeholder="请输入密码" autocomplete="off" class="layui-input">-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--            </fieldset>-->
-<!--        </form>-->
-<!--    </div>-->
-<!--</div>-->
+<style>
+        fieldset {
+            padding: .35em .625em .75em;
+            margin: 0 2px;
+            border: 1px solid silver;
+        }
 
+        legend {
+            padding: .5em;
+            border: 0;
+            width: auto;
+        }
+    </style>
+<body class="gray-bg">
+
+<div class="row">
+    <div class="col-sm-6">
+        <div class="ibox float-e-margins">
+            <div class="ibox-content">
+                <form class="form-inline">
+                    <fieldset>
+                        <legend>总承包企业</legend>
+                        <div class="form-group">
+                            <label for="exampleInputName2">统一社会信用代码/组织机构代码:</label>
+                            <input type="text" class="form-control" id="exampleInputName2" placeholder="Jane Doe">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail2">企业名称</label>
+                            <input type="email" class="form-control" id="exampleInputEmail2" placeholder="jane.doe@example.com">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputName2">公司地址</label>
+                            <select class="form-control">
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                                <option>5</option>
+                            </select>
+                            <select class="form-control">
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                                <option>5</option>
+                            </select>
+                            <select class="form-control">
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                                <option>5</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail2">经营地址</label>
+                            <input type="email" class="form-control" id="exampleInputEmail2" placeholder="jane.doe@example.com">
+                        </div>
+                        <div class="form-group">
+                            <label class="exampleInputName2">注册日期：</label>
+                            <div class="col-sm-10">
+                                <input id="hello" class="laydate-icon form-control layer-date">
+                            </div>
+                        </div>
+                    </fieldset>
+                    <fieldset>
+                        <legend>项目详情</legend>
+                        <div class="form-group">
+                            <label for="exampleInputName2">施工许可证编号</label>
+                            <input type="text" class="form-control" id="exampleInputName2" placeholder="Jane Doe">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail2">项目编号</label>
+                            <input type="email" class="form-control" id="exampleInputEmail2" placeholder="jane.doe@example.com">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail2">项目名称</label>
+                            <input type="email" class="form-control" id="exampleInputEmail2" placeholder="jane.doe@example.com">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputName2">项目分类</label>
+                            <select class="form-control">
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                                <option>5</option>
+                            </select>
+
+                            <label for="exampleInputName2">项目状态</label>
+                            <select class="form-control">
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                                <option>5</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputName2">项目地址</label>
+                            <select class="form-control">
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                                <option>5</option>
+                            </select>
+                            <select class="form-control">
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                                <option>5</option>
+                            </select>
+                            <select class="form-control">
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                                <option>5</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail2">项目地址</label>
+                            <input type="email" class="form-control" id="exampleInputEmail2" placeholder="jane.doe@example.com">
+                        </div>
+                        <div class="form-group">
+                            <label class="exampleInputName2">项目负责人</label>
+                            <input type="email" class="form-control" id="exampleInputEmail2" placeholder="jane.doe@example.com">
+                        </div>
+                        <div class="form-group">
+                            <label class="exampleInputName2">负责人电话</label>
+                            <input type="email" class="form-control" id="exampleInputEmail2" placeholder="jane.doe@example.com">
+                        </div>
+                        <div class="form-group">
+                            <label class="exampleInputName2">劳动力管理员</label>
+                            <input type="email" class="form-control" id="exampleInputEmail2" placeholder="jane.doe@example.com">
+                            <label class="exampleInputName2">管理员电话</label>
+                            <input type="email" class="form-control" id="exampleInputEmail2" placeholder="jane.doe@example.com">
+                        </div>
+                        <div class="form-group">
+                            <label class="exampleInputName2">长度</label>
+                            <input type="email" class="form-control" id="exampleInputEmail2" placeholder="jane.doe@example.com">
+                            <label class="exampleInputName2">楼层</label>
+                            <input type="email" class="form-control" id="exampleInputEmail2" placeholder="jane.doe@example.com">
+                        </div>
+                        <div class="form-group">
+                            <label class="exampleInputName2">合同价格</label>
+                            <input type="email" class="form-control" id="exampleInputEmail2" placeholder="jane.doe@example.com">
+                            <label class="exampleInputName2">面积</label>
+                            <input type="email" class="form-control" id="exampleInputEmail2" placeholder="jane.doe@example.com">
+                        </div>
+                        <div class="form-group">
+                            <label class="exampleInputName2">合同开工日期</label>
+                            <div class="col-sm-10">
+                                <input id="hello" class="laydate-icon form-control layer-date">
+                            </div>
+                            <label class="exampleInputName2">合同竣工日期</label>
+                            <div class="col-sm-10">
+                                <input id="hello" class="laydate-icon form-control layer-date">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="exampleInputName2">百度地图纬度</label>
+                            <input type="email" class="form-control" id="exampleInputEmail2" placeholder="jane.doe@example.com">
+                            <label class="exampleInputName2">百度地图经度</label>
+                            <input type="email" class="form-control" id="exampleInputEmail2" placeholder="jane.doe@example.com">
+                        </div>
+                    </fieldset>
+                    <div class="form-group">
+                            <button class="btn btn-primary" type="submit">保存内容</button>
+                            <button class="btn btn-white" type="submit">取消</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 <script th:replace="/common/template :: script"></script>
-<script th:src="@{/js/jquery.js}" type="text/javascript" charset="utf-8"></script>
+<!-- layerDate plugin javascript -->
+<script th:src="@{/js/plugins/layer/laydate/laydate.js}"></script>
+<script>
+        //外部js调用
+        laydate({
+            elem: '#hello', //目标元素。由于laydate.js封装了一个轻量级的选择器引擎，因此elem还允许你传入class、tag但必须按照这种方式 '#id .class'
+            event: 'focus' //响应事件。如果没有传入event，则按照默认的click
+        });
+        date(start);
+        laydate(end);
+    </script>
 </body>
+
 </html>

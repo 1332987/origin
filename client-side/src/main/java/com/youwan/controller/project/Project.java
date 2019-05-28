@@ -5,14 +5,21 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-@Controller()
+@Controller
+@RequestMapping("/project")
 @Slf4j
 public class Project {
 
-    @RequestMapping("/project/info")
+    @RequestMapping("/info")
     public String info(Model model){
         log.info("lailelaodi");
         return "project/info";
+    }
+
+    @RequestMapping("/subpackage")
+    public String subpackage(Model model){
+        log.info("subpackage");
+        return "project/subpackage";
     }
 
 }

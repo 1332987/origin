@@ -1,66 +1,62 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-
 <head th:replace="/common/template :: header(~{::title},~{::link},~{::style})">
-    <title>登陆</title>
-    <link rel="stylesheet" type="text/css" th:href="@{css/login.css}"/>
+    <link th:href="@{/js/plugins/gritter/jquery.gritter.css}" rel="stylesheet">
 </head>
-<body>
-<div class="m-login-bg">
-    <div class="m-login">
-        <h3>后台系统登录</h3>
-        <div class="m-login-warp">
-            <form class="layui-form" th:actio="@{/indexs}">
-                <div class="layui-form-item">
-                    <input type="text" name="title" id="title" required lay-verify="title" placeholder="用户名" autocomplete="off" class="layui-input">
+<body class="gray-bg">
+    <div class="middle-box text-center loginscreen  animated fadeInDown">
+        <div>
+            <div>
+                <h1 class="logo-name">H+</h1>
+            </div>
+            <h3>欢迎使用 劳务实名制管理系统</h3>
+
+            <form class="form-horizontal m-t" id="signupForm" th:action="@{/indexs}">
+                <div class="form-group">
+                    <input id="username" name="username" class="form-control" type="text" aria-required="true"
+                               aria-invalid="true" placeholder="账号">
                 </div>
-                <div class="layui-form-item">
-                    <input type="text" name="password" id="password" required lay-verify="password" placeholder="密码" autocomplete="off" class="layui-input">
+                <div class="form-group">
+                    <input id="password" name="password" class="form-control" type="password" placeholder="密码" required="">
                 </div>
-                <div class="layui-form-item m-login-btn">
-                    <div class="layui-inline">
-                        <button class="layui-btn" lay-submit="" lay-filter="indexs">登录</button>
-                    </div>
-                    <div class="layui-inline">
-                        <button type="reset" class="layui-btn layui-btn-primary">取消</button>
-                    </div>
-                </div>
+                <button type="submit" class="btn btn-primary block full-width m-b">登 录</button>
             </form>
         </div>
-        <p class="copyright">Copyright 2015-2016 by XIAODU</p>
     </div>
-</div>
-<script th:replace="/common/template :: script"></script>
-<script th:src="@{js/jquery.js}" type="text/javascript" charset="utf-8"></script>
-<script>
-			layui.use(['form', 'layedit', 'laydate'], function() {
-				var form = layui.form(),
-					layer = layui.layer;
-            //自定义验证规则
-              form.verify({
-                title: function(value){
-                  if(value.length < 5){
-                    return '标题至少得5个字符啊';
-                  }
-                }
-                ,password: [
-                  /^[\S]{6,12}$/
-                  ,'密码必须6到12位，且不能出现空格'
-                ]
-              });
-				//监听提交
-				form.on('submit(indexs)', function(data) {
-                         $.post("/indexs",data.field,function(date){
-                            if(date == "登陆成功"){
-                                $(location).attr('href', 'index');
-                            }
-                            layer.alert(date), {
-                                title: ''
-                            };
-                        });
-				    return false;
-				});
-			});
-		</script>
+
+<!-- 全局js -->
+<script th:src="@{/js/jquery.min.js?v=2.1.4}"></script>
+<script th:src="@{/js/bootstrap.min.js?v=3.3.6}"></script>
+
+<!-- 自定义js -->
+<script th:src="@{/js/content.js?v=1.0.0}"></script>
+
+<!-- jQuery Validation plugin javascript-->
+<script th:src="@{/js/plugins/validate/jquery.validate.min.js}"></script>
+<script th:src="@{/js/plugins/validate/messages_zh.min.js}"></script>
+
+<script th:src="@{/js/demo/form-validate-demo.js}"></script>
+    <!-- GITTER -->
+    <script th:src="@{/js/plugins/gritter/jquery.gritter.min.js}"></script>
+        <script>
+    $.validator.setDefaults({
+        submitHandler: function() {
+        $.post("/indexs", $('form').serializeArray(),
+        function(data){
+            if(data == "登陆成功"){
+                $(location).attr('href', '/index');
+            }else{
+                $.gritter.add({
+                    title: '提示',
+                    text: '<p class="text-center"><h1>'+data+'</h1></p>',
+                    time: 10000
+                });
+            }
+    });
+
+         }
+    });
+</script>
 </body>
+
 </html>

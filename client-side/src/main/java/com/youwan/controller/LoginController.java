@@ -18,7 +18,7 @@ public class LoginController {
     private UserDao userDao;
 
     @RequestMapping("login")
-    public String login (Model model){
+    public String login(Model model) {
         return "login";
     }
 
@@ -34,8 +34,9 @@ public class LoginController {
         log.info("password" + StringUtils.equals(password, use.getPassword()));
         return "登陆成功";
     }
+
     @RequestMapping("index")
-    public String index (Model model ){
+    public String index(Model model) {
         log.info("----------------------");
         return "index";
     }

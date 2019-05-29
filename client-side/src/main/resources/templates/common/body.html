@@ -9,7 +9,7 @@
             <ul class="nav" id="side-menu">
                 <li class="nav-header">
                     <div class="dropdown profile-element">
-                        <span><img alt="image" class="img-circle" src="img/profile_small.jpg" /></span>
+                        <span><img alt="image" class="img-circle" src="img/profile_small.jpg"/></span>
                         <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                                 <span class="clear">
                                <span class="block m-t-xs"><strong class="font-bold">Beaut-zihan</strong></span>
@@ -34,7 +34,8 @@
                     </div>
                 </li>
                 <li>
-                    <a class="J_menuItem" th:href="@{/index}"><i class="fa fa-columns" data-index="0"></i> <span class="nav-label">首页</span></a>
+                    <a class="J_menuItem" th:href="@{/index}"><i class="fa fa-columns" data-index="0"></i> <span
+                            class="nav-label">首页</span></a>
                 </li>
                 <li>
                     <a href="#">
@@ -115,18 +116,20 @@
                     </a>
                 </li>
                 <li>
-                    <a href="#"><i class="fa fa-flask"></i> <span class="nav-label">来访登记</span><span class="fa arrow"></span></a>
+                    <a href="#"><i class="fa fa-flask"></i> <span class="nav-label">来访登记</span><span
+                            class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
                         <li><a class="J_menuItem" href="typography.html">来访登记</a>
                         </li>
                     </ul>
                 </li>
                 <li>
-                    <a href="#"><i class="fa fa-table"></i> <span class="nav-label">系统设置</span><span class="fa arrow"></span></a>
+                    <a href="#"><i class="fa fa-table"></i> <span class="nav-label">系统设置</span><span
+                            class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
                         <li><a class="J_menuItem" href="table_basic.html">云端同步</a>
                         </li>
-                        <li><a class="J_menuItem" href="table_data_tables.html">数据维护</a>
+                        <li><a class="J_menuItem" th:href="@{/h2}">数据维护</a>
                         </li>
                         <li><a class="J_menuItem" href="table_jqgrid.html">用户管理</a>
                         </li>
@@ -166,7 +169,7 @@
             <div class="tab-content">
                 <div id="tab-1" class="tab-pane active">
                     <div class="sidebar-title">
-                        <h3> <i class="fa fa-comments-o"></i> 主题设置</h3>
+                        <h3><i class="fa fa-comments-o"></i> 主题设置</h3>
                         <small><i class="fa fa-tim"></i> 你可以从这里选择和预览主题的布局和样式，这些设置会被保存在本地，下次打开的时候会直接应用这些设置。</small>
                     </div>
                     <div class="skin-setttings">
@@ -175,7 +178,8 @@
                             <span>收起左侧菜单</span>
                             <div class="switch">
                                 <div class="onoffswitch">
-                                    <input type="checkbox" name="collapsemenu" class="onoffswitch-checkbox" id="collapsemenu">
+                                    <input class="onoffswitch-checkbox" id="collapsemenu" name="collapsemenu"
+                                           type="checkbox">
                                     <label class="onoffswitch-label" for="collapsemenu">
                                         <span class="onoffswitch-inner"></span>
                                         <span class="onoffswitch-switch"></span>
@@ -188,7 +192,8 @@
 
                             <div class="switch">
                                 <div class="onoffswitch">
-                                    <input type="checkbox" name="fixednavbar" class="onoffswitch-checkbox" id="fixednavbar">
+                                    <input class="onoffswitch-checkbox" id="fixednavbar" name="fixednavbar"
+                                           type="checkbox">
                                     <label class="onoffswitch-label" for="fixednavbar">
                                         <span class="onoffswitch-inner"></span>
                                         <span class="onoffswitch-switch"></span>
@@ -203,7 +208,8 @@
 
                             <div class="switch">
                                 <div class="onoffswitch">
-                                    <input type="checkbox" name="boxedlayout" class="onoffswitch-checkbox" id="boxedlayout">
+                                    <input class="onoffswitch-checkbox" id="boxedlayout" name="boxedlayout"
+                                           type="checkbox">
                                     <label class="onoffswitch-label" for="boxedlayout">
                                         <span class="onoffswitch-inner"></span>
                                         <span class="onoffswitch-switch"></span>
@@ -238,7 +244,7 @@
                 <div id="tab-2" class="tab-pane">
 
                     <div class="sidebar-title">
-                        <h3> <i class="fa fa-comments-o"></i> 最新通知</h3>
+                        <h3><i class="fa fa-comments-o"></i> 最新通知</h3>
                         <small><i class="fa fa-tim"></i> 您当前有10条未读信息</small>
                     </div>
 
@@ -366,7 +372,7 @@
                 <div id="tab-3" class="tab-pane">
 
                     <div class="sidebar-title">
-                        <h3> <i class="fa fa-cube"></i> 最新任务</h3>
+                        <h3><i class="fa fa-cube"></i> 最新任务</h3>
                         <small><i class="fa fa-tim"></i> 您当前有14个任务，10个已完成</small>
                     </div>
 

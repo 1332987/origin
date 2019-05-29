@@ -4,25 +4,25 @@
     <link th:href="@{/js/plugins/gritter/jquery.gritter.css}" rel="stylesheet">
 </head>
 <body class="gray-bg">
-    <div class="middle-box text-center loginscreen  animated fadeInDown">
+<div class="middle-box text-center loginscreen  animated fadeInDown">
+    <div>
         <div>
-            <div>
-                <h1 class="logo-name">H+</h1>
-            </div>
-            <h3>欢迎使用 劳务实名制管理系统</h3>
-
-            <form class="form-horizontal m-t" id="signupForm" th:action="@{/indexs}">
-                <div class="form-group">
-                    <input id="username" name="username" class="form-control" type="text" aria-required="true"
-                               aria-invalid="true" placeholder="账号">
-                </div>
-                <div class="form-group">
-                    <input id="password" name="password" class="form-control" type="password" placeholder="密码" required="">
-                </div>
-                <button type="submit" class="btn btn-primary block full-width m-b">登 录</button>
-            </form>
+            <h1 class="logo-name">H+</h1>
         </div>
+        <h3>欢迎使用 劳务实名制管理系统</h3>
+
+        <form class="form-horizontal m-t" id="signupForm" th:action="@{/indexs}">
+            <div class="form-group">
+                <input aria-invalid="true" aria-required="true" class="form-control" id="username" name="username"
+                       placeholder="账号" type="text">
+            </div>
+            <div class="form-group">
+                <input class="form-control" id="password" name="password" placeholder="密码" required="" type="password">
+            </div>
+            <button class="btn btn-primary block full-width m-b" type="submit">登 录</button>
+        </form>
     </div>
+</div>
 
 <!-- 全局js -->
 <script th:src="@{/js/jquery.min.js?v=2.1.4}"></script>
@@ -36,9 +36,9 @@
 <script th:src="@{/js/plugins/validate/messages_zh.min.js}"></script>
 
 <script th:src="@{/js/demo/form-validate-demo.js}"></script>
-    <!-- GITTER -->
-    <script th:src="@{/js/plugins/gritter/jquery.gritter.min.js}"></script>
-        <script>
+<!-- GITTER -->
+<script th:src="@{/js/plugins/gritter/jquery.gritter.min.js}"></script>
+<script>
     $.validator.setDefaults({
         submitHandler: function() {
         $.post("/indexs", $('form').serializeArray(),
@@ -56,6 +56,7 @@
 
          }
     });
+
 </script>
 </body>
 

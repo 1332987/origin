@@ -101,7 +101,7 @@ public class HelloController {
     @ResponseBody
     @RequestMapping("hairpin")
     public String hairpin() {
-        HashMap<String, String> mData = new HashMap<String, String>();
+        HashMap<String, String> mData = new HashMap<>();
         mData.put("pass", "12345678");
         mData.put("id", "88888");
         String date = NetUtil.startGet("http://192.168.1.12:8090/person/find", mData);
@@ -131,6 +131,14 @@ public class HelloController {
         String date = NetUtil.post("http://192.168.1.12:8090/face/takeImg", data);
         System.out.println(date);
         return date;
+    }
+
+    @ResponseBody
+    @RequestMapping("tableT")
+    public String tableT() {
+
+        return "[{\"id\": \"1\",\"type\": \"超管\",\"username\": \"admin\",\"password\": \"asSelect\"},{\"id\": \"1\",\"type\": \"超管\",\"username\": \"admin\",\"password\": \"asSelect\"}" +
+                "]";
     }
 
     @ResponseBody

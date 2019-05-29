@@ -11,15 +11,21 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class Project {
 
     @RequestMapping("/info")
-    public String info(Model model){
+    public String info(Model model) {
         log.info("lailelaodi");
         return "project/info";
     }
 
     @RequestMapping("/subpackage")
-    public String subpackage(Model model){
+    public String subpackage(Model model) {
         log.info("subpackage");
         return "project/subpackage";
+    }
+
+    @RequestMapping("/addSubpackage")
+    public String addSubpackage(Model model) {
+        log.info("subpackage");
+        return "project/addSubpackage";
     }
 
 }

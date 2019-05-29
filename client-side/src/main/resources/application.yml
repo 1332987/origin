@@ -10,9 +10,9 @@ spring:
     servlet:
       content-type: text/html
   #热部署生效
-#  devtools:
-#    restart:
-#      enabled: true
+  #  devtools:
+  #    restart:
+  #      enabled: true
   #编码格式
   http:
     encoding:
@@ -24,8 +24,8 @@ spring:
   #h2数据库
   datasource:
     url: jdbc:h2:file:./client-side/src/main/resources/db/test01;MODE=MySQL;AUTO_SERVER=TRUE;DB_CLOSE_DELAY=-1      #存到本地文件
-  #datasource.url=jdbc:h2:mem:test 存到内存中
-  #datasource.url=jdbc:h2:mem:test;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+    #datasource.url=jdbc:h2:mem:test 存到内存中
+    #datasource.url=jdbc:h2:mem:test;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
     driverClassName: org.h2.Driver
     username: root
     password: 123456
@@ -35,10 +35,11 @@ spring:
   #resources/db/data.sql
   h2:
     console:
+      enabled: true
+      path: /h2
       settings:
-        web-allow-others: true
-    path: /h2
-    enabled: true
+        web-allow-others: false
+        trace: false
   jpa:
     database-platform: org.hibernate.dialect.H2Dialect
     generate-ddl: true

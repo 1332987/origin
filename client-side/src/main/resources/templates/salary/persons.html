@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="/common/template :: header(~{::title},~{::link},~{::style})">
+    <link rel="stylesheet" th:href="@{/css/plugins/bootstrap-table/bootstrap-table.min.css}">
+</head>
+<body class="gray-bg">
+<div class="row">
+    <div class="col-sm-12">
+        <div class="tabs-container">
+            <ul class="nav nav-tabs">
+                <li class="active"><a data-toggle="tab" href="#tab-1" aria-expanded="true">日刷卡明细表</a>
+                </li>
+                <li class=""><a data-toggle="tab" href="#tab-2" aria-expanded="false">考勤明细表</a>
+                </li>
+                <li class=""><a data-toggle="tab" href="#tab-3" aria-expanded="false">考勤统计表</a>
+                </li>
+                <li class=""><a data-toggle="tab" href="#tab-4" aria-expanded="false">月出勤统计表</a>
+                </li>
+                <li class=""><a data-toggle="tab" href="#tab-5" aria-expanded="false">月出勤工时表</a>
+                </li>
+                <li class=""><a data-toggle="tab" href="#tab-6" aria-expanded="false">月出勤时间表</a>
+                </li>
+                <li class=""><a data-toggle="tab" href="#tab-7" aria-expanded="false">月出勤汇总表</a>
+                </li>
+            </ul>
+            <div class="tab-content">
+                <div id="tab-1" class="tab-pane active">
+                    <!-- Example Events -->
+                    <div class="example-wrap">
+                        <div class="example">
+                            <div class="btn-group hidden-xs" id="exampleTableEventsToolbar" role="group">
+                                <button class="btn btn-outline btn-default" id="parentIframe" type="button">
+                                    <i aria-hidden="true" class="glyphicon glyphicon-plus"></i>添加
+                                </button>
+                                <button class="btn btn-outline btn-default" type="button">
+                                    <i aria-hidden="true" class="glyphicon glyphicon-edit"></i>编辑
+                                </button>
+                                <button class="btn btn-outline btn-default" type="button">
+                                    <i aria-hidden="true" class="glyphicon glyphicon-trash"></i>删除
+                                </button>
+                                <button class="btn btn-outline btn-default" type="button">
+                                    <i aria-hidden="true" class="glyphicon glyphicon-download-alt"></i>导出
+                                </button>
+                            </div>
+                            <table data-height="400" data-mobile-responsive="true" id="exampleTableEvents">
+                                <thead>
+                                <tr>
+                                    <th data-checkbox="true" data-field="state"></th>
+                                    <th data-field="id">ID</th>
+                                    <th data-field="type">类型</th>
+                                    <th data-field="username">账号</th>
+                                    <th data-field="password">密码</th>
+                                </tr>
+                                </thead>
+                            </table>
+                        </div>
+                    </div>
+                    <!-- End Example Events -->
+                </div>
+                <div id="tab-2" class="tab-pane">
+                    <div class="panel-body">
+                        <!-- Example Events -->
+                        <div class="example-wrap">
+                            <div class="example">
+                                <div class="btn-group hidden-xs" id="exampleTableEventsToolbar" role="group">
+                                    <button class="btn btn-outline btn-default" id="parentIframe" type="button">
+                                        <i aria-hidden="true" class="glyphicon glyphicon-plus"></i>添加
+                                    </button>
+                                    <button class="btn btn-outline btn-default" type="button">
+                                        <i aria-hidden="true" class="glyphicon glyphicon-edit"></i>编辑
+                                    </button>
+                                    <button class="btn btn-outline btn-default" type="button">
+                                        <i aria-hidden="true" class="glyphicon glyphicon-trash"></i>删除
+                                    </button>
+                                    <button class="btn btn-outline btn-default" type="button">
+                                        <i aria-hidden="true" class="glyphicon glyphicon-download-alt"></i>导出
+                                    </button>
+                                </div>
+                                <table data-height="400" data-mobile-responsive="true" id="exampleTableEvents">
+                                    <thead>
+                                    <tr>
+                                        <th data-checkbox="true" data-field="state"></th>
+                                        <th data-field="id">ID</th>
+                                        <th data-field="type">类型</th>
+                                        <th data-field="username">账号</th>
+                                        <th data-field="password">密码</th>
+                                    </tr>
+                                    </thead>
+                                </table>
+                            </div>
+                        </div>
+                        <!-- End Example Events -->
+                    </div>
+                </div>
+                <div id="tab-3" class="tab-pane">
+                    <div class="panel-body">
+                        <!-- Example Events -->
+                        <div class="example-wrap">
+                            <div class="example">
+                                <div class="btn-group hidden-xs" id="exampleTableEventsToolbar" role="group">
+                                    <button class="btn btn-outline btn-default" id="parentIframe" type="button">
+                                        <i aria-hidden="true" class="glyphicon glyphicon-plus"></i>添加
+                                    </button>
+                                    <button class="btn btn-outline btn-default" type="button">
+                                        <i aria-hidden="true" class="glyphicon glyphicon-edit"></i>编辑
+                                    </button>
+                                    <button class="btn btn-outline btn-default" type="button">
+                                        <i aria-hidden="true" class="glyphicon glyphicon-trash"></i>删除
+                                    </button>
+                                    <button class="btn btn-outline btn-default" type="button">
+                                        <i aria-hidden="true" class="glyphicon glyphicon-download-alt"></i>导出
+                                    </button>
+                                </div>
+                                <table data-height="400" data-mobile-responsive="true" id="exampleTableEvents">
+                                    <thead>
+                                    <tr>
+                                        <th data-checkbox="true" data-field="state"></th>
+                                        <th data-field="id">ID</th>
+                                        <th data-field="type">类型</th>
+                                        <th data-field="username">账号</th>
+                                        <th data-field="password">密码</th>
+                                    </tr>
+                                    </thead>
+                                </table>
+                            </div>
+                        </div>
+                        <!-- End Example Events -->
+                    </div>
+                </div>
+
+                <div id="tab-4" class="tab-pane active">
+                    <!-- Example Events -->
+                    <div class="example-wrap">
+                        <div class="example">
+                            <div class="btn-group hidden-xs" id="exampleTableEventsToolbar" role="group">
+                                <button class="btn btn-outline btn-default" id="parentIframe" type="button">
+                                    <i aria-hidden="true" class="glyphicon glyphicon-plus"></i>添加
+                                </button>
+                                <button class="btn btn-outline btn-default" type="button">
+                                    <i aria-hidden="true" class="glyphicon glyphicon-edit"></i>编辑
+                                </button>
+                                <button class="btn btn-outline btn-default" type="button">
+                                    <i aria-hidden="true" class="glyphicon glyphicon-trash"></i>删除
+                                </button>
+                                <button class="btn btn-outline btn-default" type="button">
+                                    <i aria-hidden="true" class="glyphicon glyphicon-download-alt"></i>导出
+                                </button>
+                            </div>
+                            <table data-height="400" data-mobile-responsive="true" id="exampleTableEvents">
+                                <thead>
+                                <tr>
+                                    <th data-checkbox="true" data-field="state"></th>
+                                    <th data-field="id">ID</th>
+                                    <th data-field="type">类型</th>
+                                    <th data-field="username">账号</th>
+                                    <th data-field="password">密码</th>
+                                </tr>
+                                </thead>
+                            </table>
+                        </div>
+                    </div>
+                    <!-- End Example Events -->
+                </div>
+                <div id="tab-5" class="tab-pane">
+                    <div class="panel-body">
+                        <!-- Example Events -->
+                        <div class="example-wrap">
+                            <div class="example">
+                                <div class="btn-group hidden-xs" id="exampleTableEventsToolbar" role="group">
+                                    <button class="btn btn-outline btn-default" id="parentIframe" type="button">
+                                        <i aria-hidden="true" class="glyphicon glyphicon-plus"></i>添加
+                                    </button>
+                                    <button class="btn btn-outline btn-default" type="button">
+                                        <i aria-hidden="true" class="glyphicon glyphicon-edit"></i>编辑
+                                    </button>
+                                    <button class="btn btn-outline btn-default" type="button">
+                                        <i aria-hidden="true" class="glyphicon glyphicon-trash"></i>删除
+                                    </button>
+                                    <button class="btn btn-outline btn-default" type="button">
+                                        <i aria-hidden="true" class="glyphicon glyphicon-download-alt"></i>导出
+                                    </button>
+                                </div>
+                                <table data-height="400" data-mobile-responsive="true" id="exampleTableEvents">
+                                    <thead>
+                                    <tr>
+                                        <th data-checkbox="true" data-field="state"></th>
+                                        <th data-field="id">ID</th>
+                                        <th data-field="type">类型</th>
+                                        <th data-field="username">账号</th>
+                                        <th data-field="password">密码</th>
+                                    </tr>
+                                    </thead>
+                                </table>
+                            </div>
+                        </div>
+                        <!-- End Example Events -->
+                    </div>
+                </div>
+
+                <div id="tab-6" class="tab-pane active">
+                    <!-- Example Events -->
+                    <div class="example-wrap">
+                        <div class="example">
+                            <div class="btn-group hidden-xs" id="exampleTableEventsToolbar" role="group">
+                                <button class="btn btn-outline btn-default" id="parentIframe" type="button">
+                                    <i aria-hidden="true" class="glyphicon glyphicon-plus"></i>添加
+                                </button>
+                                <button class="btn btn-outline btn-default" type="button">
+                                    <i aria-hidden="true" class="glyphicon glyphicon-edit"></i>编辑
+                                </button>
+                                <button class="btn btn-outline btn-default" type="button">
+                                    <i aria-hidden="true" class="glyphicon glyphicon-trash"></i>删除
+                                </button>
+                                <button class="btn btn-outline btn-default" type="button">
+                                    <i aria-hidden="true" class="glyphicon glyphicon-download-alt"></i>导出
+                                </button>
+                            </div>
+                            <table data-height="400" data-mobile-responsive="true" id="exampleTableEvents">
+                                <thead>
+                                <tr>
+                                    <th data-checkbox="true" data-field="state"></th>
+                                    <th data-field="id">ID</th>
+                                    <th data-field="type">类型</th>
+                                    <th data-field="username">账号</th>
+                                    <th data-field="password">密码</th>
+                                </tr>
+                                </thead>
+                            </table>
+                        </div>
+                    </div>
+                    <!-- End Example Events -->
+                </div>
+                <div id="tab-7" class="tab-pane">
+                    <div class="panel-body">
+                        <!-- Example Events -->
+                        <div class="example-wrap">
+                            <div class="example">
+                                <div class="btn-group hidden-xs" id="exampleTableEventsToolbar" role="group">
+                                    <button class="btn btn-outline btn-default" id="parentIframe" type="button">
+                                        <i aria-hidden="true" class="glyphicon glyphicon-plus"></i>添加
+                                    </button>
+                                    <button class="btn btn-outline btn-default" type="button">
+                                        <i aria-hidden="true" class="glyphicon glyphicon-edit"></i>编辑
+                                    </button>
+                                    <button class="btn btn-outline btn-default" type="button">
+                                        <i aria-hidden="true" class="glyphicon glyphicon-trash"></i>删除
+                                    </button>
+                                    <button class="btn btn-outline btn-default" type="button">
+                                        <i aria-hidden="true" class="glyphicon glyphicon-download-alt"></i>导出
+                                    </button>
+                                </div>
+                                <table data-height="400" data-mobile-responsive="true" id="exampleTableEvents">
+                                    <thead>
+                                    <tr>
+                                        <th data-checkbox="true" data-field="state"></th>
+                                        <th data-field="id">ID</th>
+                                        <th data-field="type">类型</th>
+                                        <th data-field="username">账号</th>
+                                        <th data-field="password">密码</th>
+                                    </tr>
+                                    </thead>
+                                </table>
+                            </div>
+                        </div>
+                        <!-- End Example Events -->
+                    </div>
+                </div>
+
+            </div>
+
+
+        </div>
+    </div>
+</div>
+<!-- 全局js -->
+<script th:src="@{/js/jquery.min.js?v=2.1.4}"></script>
+<script th:src="@{/js/bootstrap.min.js?v=3.3.6}"></script>
+<!-- 自定义js -->
+<script th:src="@{/js/content.js?v=1.0.0}"></script>
+
+
+<!-- Bootstrap table -->
+<script th:src="@{/js/plugins/bootstrap-table/bootstrap-table.min.js}"></script>
+<script th:src="@{/js/plugins/bootstrap-table/bootstrap-table-mobile.min.js}"></script>
+<script th:src="@{/js/plugins/bootstrap-table/locale/bootstrap-table-zh-CN.min.js}"></script>
+
+<!-- Peity -->
+<script th:src="@{/js/demo/bootstrap-table-demo.js}"></script>
+
+<!-- layer javascript -->
+<script th:src="@{/js/plugins/layer/layer.min.js}"></script>
+<script>
+$(document).ready(function(){
+    $("#parentIframe").click(function(){
+        //iframe层-父子操作
+        layer.open({
+          type: 2,
+          title: '添加',
+          area: ['600px', '550px'],
+          fixed: false, //不固定
+          maxmin: true,
+          content: '/project/addSubpackage'
+        });
+    });
+});
+
+
+
+</script>
+</body>
+
+</html>

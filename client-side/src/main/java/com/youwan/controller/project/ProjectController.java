@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 @RequestMapping("/project")
 @Slf4j
-public class Project {
+public class ProjectController {
 
     @RequestMapping("/info")
     public String info(Model model) {

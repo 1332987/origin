@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="/common/template :: header(~{::title},~{::link},~{::style})">
+    <link rel="stylesheet" th:href="@{/css/plugins/bootstrap-table/bootstrap-table.min.css}">
+</head>
+<body class="gray-bg">
+<div class="row">
+    <div class="col-sm-12">
+        <div class="tabs-container">
+            <ul class="nav nav-tabs">
+                <li class="active"><a data-toggle="tab" href="#tab-1" aria-expanded="true">人脸就参数配置</a>
+                </li>
+                <li class=""><a data-toggle="tab" href="#tab-2" aria-expanded="false">控制器配置</a>
+                </li>
+                <li class=""><a data-toggle="tab" href="#tab-3" aria-expanded="false">通道配置</a>
+                </li>
+            </ul>
+            <div class="tab-content">
+                <div id="tab-1" class="tab-pane active">
+                    <div class="wrapper wrapper-content  animated fadeInRight">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="ibox float-e-margins">
+                                    <div class="ibox-title">
+                                        <h5>设备列表</h5>
+                                    </div>
+                                    <div class="ibox-content">
+                                        <div class="example-wrap">
+                                            <div class="example">
+                                                <div class="btn-group hidden-xs" id="exampleTableEventsToolbar"
+                                                     role="group">
+                                                    <button class="btn btn-outline btn-default" id="parentIframe"
+                                                            type="button">
+                                                        <i aria-hidden="true" class="glyphicon glyphicon-plus"></i>添加
+                                                    </button>
+                                                    <button class="btn btn-outline btn-default" type="button">
+                                                        <i aria-hidden="true" class="glyphicon glyphicon-edit"></i>编辑
+                                                    </button>
+                                                    <button class="btn btn-outline btn-default" type="button">
+                                                        <i aria-hidden="true" class="glyphicon glyphicon-trash"></i>删除
+                                                    </button>
+                                                </div>
+                                                <table data-height="400" data-mobile-responsive="true"
+                                                       id="exampleTableEvents">
+                                                    <thead>
+                                                    <tr>
+                                                        <th data-checkbox="true" data-field="state"></th>
+                                                        <th data-field="id">ID</th>
+                                                        <th data-field="type">设备名称</th>
+                                                        <th data-field="username">IP地址</th>
+                                                        <th data-field="password">SN号</th>
+                                                        <th data-field="username">密码</th>
+                                                        <th data-field="password">类型</th>
+                                                        <th data-field="username">型号</th>
+                                                    </tr>
+                                                    </thead>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="ibox float-e-margins no-drop">
+                                    <div class="ibox-title">
+                                        <h5>设备参数</h5>
+                                    </div>
+                                    <div class="ibox-content">
+                                        <div class="tabs-container">
+
+                                            <div class="tabs-left">
+                                                <ul class="nav nav-tabs">
+                                                    <li class="active"><a data-toggle="tab" href="#tab-8">网络参数</a>
+                                                    </li>
+                                                    <li class=""><a data-toggle="tab" href="#tab-9">基本参数</a>
+                                                    </li>
+                                                    <li class=""><a data-toggle="tab" href="#tab-10">回调参数</a>
+                                                    </li>
+                                                    <li class=""><a data-toggle="tab" href="#tab-11">显示参数</a>
+                                                    </li>
+                                                    <li class=""><a data-toggle="tab" href="#tab-12">远程操作</a>
+                                                    </li>
+                                                </ul>
+                                                <div class="tab-content ">
+                                                    <div id="tab-8" class="tab-pane active">
+                                                        <div class="panel-body">
+                                                            <form class="form-inline">
+                                                                <fieldset>
+                                                                    <legend>修改密码</legend>
+                                                                    <div class="form-group">
+                                                                        <label for="exampleInputName2">原密码:</label>
+                                                                        <input type="text" class="form-control"
+                                                                               id="exampleInputName2"
+                                                                               placeholder="Jane Doe">
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label for="exampleInputEmail2">新密码:</label>
+                                                                        <input class="form-control"
+                                                                               id="exampleInputEmail2"
+                                                                               placeholder="jane.doe@example.com"
+                                                                               type="email">
+                                                                    </div>
+                                                                </fieldset>
+                                                                <div class="form-group">
+                                                                    <button class="btn btn-primary" type="submit">确认修改
+                                                                    </button>
+                                                                </div>
+                                                            </form>
+
+                                                            <form class="form-inline">
+                                                                <fieldset>
+                                                                    <legend>修改网络参数</legend>
+                                                                    <div class="form-group">
+                                                                        <label for="exampleInputName2">设备IP:</label>
+                                                                        <input type="text" class="form-control"
+                                                                               id="exampleInputName2"
+                                                                               placeholder="Jane Doe">
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label for="exampleInputEmail2">子网掩码:</label>
+                                                                        <input class="form-control"
+                                                                               id="exampleInputEmail2"
+                                                                               placeholder="jane.doe@example.com"
+                                                                               type="email">
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label for="exampleInputEmail2">网关:</label>
+                                                                        <input class="form-control"
+                                                                               id="exampleInputEmail2"
+                                                                               placeholder="jane.doe@example.com"
+                                                                               type="email">
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label for="exampleInputEmail2">DNS:</label>
+                                                                        <input class="form-control"
+                                                                               id="exampleInputEmail2"
+                                                                               placeholder="jane.doe@example.com"
+                                                                               type="email">
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label for="exampleInputEmail2">DNS:</label>
+                                                                        <input class="form-control"
+                                                                               id="exampleInputEmail2"
+                                                                               placeholder="jane.doe@example.com"
+                                                                               type="email">
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label class="col-sm-2 control-label">IP获取模式</label>
+
+                                                                        <div class="col-sm-10">
+                                                                            <select class="form-control m-b"
+                                                                                    name="account">
+                                                                                <option>选项 1</option>
+                                                                                <option>选项 2</option>
+                                                                                <option>选项 3</option>
+                                                                                <option>选项 4</option>
+                                                                            </select>
+                                                                        </div>
+                                                                    </div>
+                                                                </fieldset>
+                                                                <div class="form-group">
+                                                                    <button class="btn btn-primary" type="submit">确认修改
+                                                                    </button>
+                                                                </div>
+                                                            </form>
+
+                                                            <form class="form-inline">
+                                                                <fieldset>
+                                                                    <legend>修改WIFI参数</legend>
+                                                                    <div class="form-group">
+                                                                        <label for="exampleInputName2">wifi名称:</label>
+                                                                        <input type="text" class="form-control"
+                                                                               id="exampleInputName2"
+                                                                               placeholder="Jane Doe">
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label for="exampleInputEmail2">wifi密码:</label>
+                                                                        <input class="form-control"
+                                                                               id="exampleInputEmail2"
+                                                                               placeholder="jane.doe@example.com"
+                                                                               type="email">
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label for="exampleInputEmail2">IP:</label>
+                                                                        <input class="form-control"
+                                                                               id="exampleInputEmail2"
+                                                                               placeholder="jane.doe@example.com"
+                                                                               type="email">
+                                                                    </div>
+                                                                </fieldset>
+                                                                <div class="form-group">
+                                                                    <button class="btn btn-primary" type="submit">确认修改
+                                                                    </button>
+                                                                </div>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                    <div id="tab-9" class="tab-pane">
+                                                        <div class="panel-body">
+                                                            <form class="form-inline">
+                                                                <fieldset>
+                                                                    <legend>修改设备参数</legend>
+
+                                                                    <div class="col-sm-6">
+                                                                        <div class="form-group">
+                                                                            <label for="exampleInputName2">设备名称:</label>
+                                                                            <input type="text" class="form-control"
+                                                                                   id="exampleInputName2"
+                                                                                   placeholder="Jane Doe">
+                                                                        </div>
+                                                                        <div class="form-group">
+                                                                            <label for="exampleInputEmail2">识别距离:</label>
+                                                                            <div class="col-sm-10">
+                                                                                <select class="form-control m-b"
+                                                                                        name="account">
+                                                                                    <option>选项 1</option>
+                                                                                    <option>选项 2</option>
+                                                                                    <option>选项 3</option>
+                                                                                    <option>选项 4</option>
+                                                                                </select>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="form-group">
+                                                                            <label for="exampleInputEmail2">识别分数:</label>
+                                                                            <input class="form-control"
+                                                                                   id="exampleInputEmail2"
+                                                                                   placeholder="jane.doe@example.com"
+                                                                                   type="email">
+                                                                        </div>
+                                                                        <div class="form-group">
+                                                                            <label for="exampleInputEmail2">识别间隔:</label>
+                                                                            <input class="form-control"
+                                                                                   id="exampleInputEmail2"
+                                                                                   placeholder="jane.doe@example.com"
+                                                                                   type="email">
+                                                                        </div>
+                                                                        <div class="form-group">
+                                                                            <label for="exampleInputEmail2">开门延时:</label>
+                                                                            <input class="form-control"
+                                                                                   id="exampleInputEmail2"
+                                                                                   placeholder="jane.doe@example.com"
+                                                                                   type="email">
+                                                                        </div>
+                                                                        <div class="form-group">
+                                                                            <label for="exampleInputEmail2">串口模式:</label>
+                                                                            <select class="form-control m-b"
+                                                                                    name="account">
+                                                                                <option>选项 1</option>
+                                                                                <option>选项 2</option>
+                                                                                <option>选项 3</option>
+                                                                                <option>选项 4</option>
+                                                                            </select>
+                                                                        </div>
+                                                                        <div class="form-group">
+                                                                            <label for="exampleInputEmail2">串口自定义:</label>
+                                                                            <input class="form-control"
+                                                                                   id="exampleInputEmail2"
+                                                                                   placeholder="jane.doe@example.com"
+                                                                                   type="email">
+                                                                        </div>
+                                                                        <div class="form-group">
+                                                                            <label for="exampleInputName2">标语:</label>
+                                                                            <input type="text" class="form-control"
+                                                                                   id="exampleInputName2"
+                                                                                   placeholder="Jane Doe">
+                                                                        </div>
+                                                                        <div class="form-group">
+                                                                            <label for="exampleInputEmail2">公司简介:</label>
+                                                                            <input class="form-control"
+                                                                                   id="exampleInputEmail2"
+                                                                                   placeholder="jane.doe@example.com"
+                                                                                   type="email">
+                                                                        </div>
+                                                                        <div class="form-group">
+                                                                            <label for="exampleInputEmail2">韦根输出:</label>
+                                                                            <select class="form-control m-b"
+                                                                                    name="account">
+                                                                                <option>选项 1</option>
+                                                                                <option>选项 2</option>
+                                                                                <option>选项 3</option>
+                                                                                <option>选项 4</option>
+                                                                            </select>
+                                                                        </div>
+                                                                        <div class="form-group">
+                                                                            <label for="exampleInputEmail2">人证对比:</label>
+                                                                            <select class="form-control m-b"
+                                                                                    name="account">
+                                                                                <option>选项 1</option>
+                                                                                <option>选项 2</option>
+                                                                                <option>选项 3</option>
+                                                                                <option>选项 4</option>
+                                                                            </select>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-sm-6">
+                                                                        <div class="form-group">
+                                                                            <label for="exampleInputName2">语音模式:</label>
+                                                                            <select class="form-control m-b"
+                                                                                    name="account">
+                                                                                <option>选项 1</option>
+                                                                                <option>选项 2</option>
+                                                                                <option>选项 3</option>
+                                                                                <option>选项 4</option>
+                                                                            </select>
+                                                                        </div>
+                                                                        <div class="form-group">
+                                                                            <label for="exampleInputEmail2">语音自定义:</label>
+                                                                            <input class="form-control"
+                                                                                   id="exampleInputEmail2"
+                                                                                   placeholder="jane.doe@example.com"
+                                                                                   type="email">
+                                                                        </div>
+                                                                        <div class="form-group">
+                                                                            <label for="exampleInputEmail2">显示模式:</label>
+                                                                            <select class="form-control m-b"
+                                                                                    name="account">
+                                                                                <option>选项 1</option>
+                                                                                <option>选项 2</option>
+                                                                                <option>选项 3</option>
+                                                                                <option>选项 4</option>
+                                                                            </select>
+                                                                        </div>
+                                                                        <div class="form-group">
+                                                                            <label for="exampleInputEmail2">显示自定义:</label>
+                                                                            <input class="form-control"
+                                                                                   id="exampleInputEmail2"
+                                                                                   placeholder="jane.doe@example.com"
+                                                                                   type="email">
+                                                                        </div>
+                                                                        <div class="form-group">
+                                                                            <label for="exampleInputEmail2">多人脸检测:</label>
+                                                                            <select class="form-control m-b"
+                                                                                    name="account">
+                                                                                <option>选项 1</option>
+                                                                                <option>选项 2</option>
+                                                                                <option>选项 3</option>
+                                                                                <option>选项 4</option>
+                                                                            </select>
+                                                                        </div>
+                                                                        <div class="form-group">
+                                                                            <label for="exampleInputEmail2">陌生人开关:</label>
+                                                                            <select class="form-control m-b"
+                                                                                    name="account">
+                                                                                <option>选项 1</option>
+                                                                                <option>选项 2</option>
+                                                                                <option>选项 3</option>
+                                                                                <option>选项 4</option>
+                                                                            </select>
+                                                                        </div>
+
+                                                                        <div class="form-group">
+                                                                            <label for="exampleInputEmail2">陌生人判断次数:</label>
+                                                                            <input class="form-control"
+                                                                                   id="exampleInputEmail2"
+                                                                                   placeholder="jane.doe@example.com"
+                                                                                   type="email">
+                                                                        </div>
+                                                                        <div class="form-group">
+                                                                            <label for="exampleInputEmail2">陌生人语音模式:</label>
+                                                                            <select class="form-control m-b"
+                                                                                    name="account">
+                                                                                <option>选项 1</option>
+                                                                                <option>选项 2</option>
+                                                                                <option>选项 3</option>
+                                                                                <option>选项 4</option>
+                                                                            </select>
+                                                                        </div>
+
+                                                                        <div class="form-group">
+                                                                            <label for="exampleInputEmail2">陌生人语音自定义:</label>
+                                                                            <input class="form-control"
+                                                                                   id="exampleInputEmail2"
+                                                                                   placeholder="jane.doe@example.com"
+                                                                                   type="email">
+                                                                        </div>
+                                                                        <div class="form-group">
+                                                                            <label for="exampleInputEmail2">照片防伪等级:</label>
+                                                                            <select class="form-control m-b"
+                                                                                    name="account">
+                                                                                <option>选项 1</option>
+                                                                                <option>选项 2</option>
+                                                                                <option>选项 3</option>
+                                                                                <option>选项 4</option>
+                                                                            </select>
+                                                                        </div>
+                                                                    </div>
+
+                                                                </fieldset>
+                                                                <div class="form-group">
+                                                                    <button class="btn btn-primary" type="submit">确认修改
+                                                                    </button>
+                                                                </div>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                    <div id="tab-10" class="tab-pane">
+                                                        <div class="panel-body">
+                                                            <form class="form-inline">
+                                                                <fieldset>
+                                                                    <legend>设置回调地址</legend>
+                                                                    <div class="form-group">
+                                                                        <label for="exampleInputName2">识别回调地址:</label>
+                                                                        <input type="text" class="form-control"
+                                                                               id="exampleInputName2"
+                                                                               placeholder="Jane Doe">
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label for="exampleInputEmail2">设备心跳地址:</label>
+                                                                        <input class="form-control"
+                                                                               id="exampleInputEmail2"
+                                                                               placeholder="jane.doe@example.com"
+                                                                               type="email">
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label for="exampleInputEmail2">拍照注册地址:</label>
+                                                                        <input class="form-control"
+                                                                               id="exampleInputEmail2"
+                                                                               placeholder="jane.doe@example.com"
+                                                                               type="email">
+                                                                    </div>
+                                                                </fieldset>
+                                                                <div class="form-group">
+                                                                    <button class="btn btn-primary" type="submit">确认修改
+                                                                    </button>
+                                                                </div>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                    <div id="tab-11" class="tab-pane">
+                                                        <div class="panel-body">
+                                                            <div class="col-sm-12">
+                                                                <div class="col-sm-6">
+                                                                    <form class="form-inline">
+                                                                        <fieldset>
+                                                                            <legend>屏幕方向</legend>
+                                                                            <div class="form-group">
+                                                                                <label for="exampleInputName2">识别回调地址:</label>
+                                                                                <select class="form-control m-b"
+                                                                                        name="account">
+                                                                                    <option>选项 1</option>
+                                                                                    <option>选项 2</option>
+                                                                                    <option>选项 3</option>
+                                                                                    <option>选项 4</option>
+                                                                                </select>
+                                                                            </div>
+                                                                        </fieldset>
+                                                                        <div class="form-group">
+                                                                            <button class="btn btn-primary"
+                                                                                    type="submit">确认修改
+                                                                            </button>
+                                                                        </div>
+                                                                    </form>
+                                                                </div>
+                                                                <div class="col-sm-6">
+
+                                                                    <form class="form-inline">
+                                                                        <fieldset>
+                                                                            <legend>修改Log</legend>
+                                                                            <div class="col-sm-6">
+
+                                                                            </div>
+                                                                            <div class="col-sm-6">
+                                                                                <div class="form-group">
+                                                                                    <button class="btn btn-primary"
+                                                                                            type="submit">选择log照片
+                                                                                    </button>
+                                                                                </div>
+                                                                                <div class="form-group">
+                                                                                    <button class="btn btn-primary"
+                                                                                            type="submit">修改Log
+                                                                                    </button>
+                                                                                </div>
+                                                                                <div class="form-group">
+                                                                                    <button class="btn btn-primary"
+                                                                                            type="submit">清除Log
+                                                                                    </button>
+                                                                                </div>
+                                                                            </div>
+                                                                        </fieldset>
+                                                                    </form>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-sm-12">
+                                                                <fieldset>
+                                                                    <legend>大屏幕显示模式及背景图配置</legend>
+
+                                                                    <div class="col-sm-6">
+                                                                        <div class="form-group">
+                                                                            <label for="exampleInputName2">显示模式:</label>
+                                                                            <select class="form-control m-b"
+                                                                                    name="account">
+                                                                                <option>选项 1</option>
+                                                                                <option>选项 2</option>
+                                                                                <option>选项 3</option>
+                                                                                <option>选项 4</option>
+                                                                            </select>
+                                                                        </div>
+                                                                        <div class="form-group">
+                                                                            <label for="exampleInputEmail2">背景图(小于1920 ×
+                                                                                1080):</label>
+                                                                            <div class="image"></div>
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div class="col-sm-6">
+
+                                                                        <div class="form-group">
+                                                                            <button class="btn btn-primary"
+                                                                                    type="submit">选择log照片
+                                                                            </button>
+                                                                        </div>
+                                                                        <div class="form-group">
+                                                                            <button class="btn btn-primary"
+                                                                                    type="submit">修改Log
+                                                                            </button>
+                                                                        </div>
+                                                                        <div class="form-group">
+                                                                            <button class="btn btn-primary"
+                                                                                    type="submit">清除Log
+                                                                            </button>
+                                                                        </div>
+                                                                    </div>
+
+                                                                </fieldset>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div id="tab-12" class="tab-pane">
+                                                        <div class="panel-body">
+                                                            序列号<input type="text">
+                                                            <button>读取序列号</button>
+                                                            <br>
+                                                            <button class="btn btn-primary"
+                                                                    type="submit">设置时间
+                                                            </button>
+                                                            <button class="btn btn-primary"
+                                                                    type="submit">重启设备
+                                                            </button>
+                                                            <button class="btn btn-primary"
+                                                                    type="submit">重置设备
+                                                            </button>
+                                                            <button class="btn btn-primary"
+                                                                    type="submit">远程开门
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+                <div id="tab-2" class="tab-pane">
+                    <div class="panel-body">
+                        <div class="col-sm-6">
+                            <div class="ibox float-e-margins">
+                                <div class="ibox-title">
+                                    <h5>设备列表</h5>
+                                </div>
+                                <div class="ibox-content">
+                                    <div class="example-wrap">
+                                        <div class="example">
+                                            <div class="btn-group hidden-xs" id="exampleTableEventsToolbar1"
+                                                 role="group">
+                                                <button class="btn btn-outline btn-default" id="parentIframe"
+                                                        type="button">
+                                                    <i aria-hidden="true" class="glyphicon glyphicon-plus"></i>添加
+                                                </button>
+                                                <button class="btn btn-outline btn-default" type="button">
+                                                    <i aria-hidden="true" class="glyphicon glyphicon-edit"></i>编辑
+                                                </button>
+                                                <button class="btn btn-outline btn-default" type="button">
+                                                    <i aria-hidden="true" class="glyphicon glyphicon-trash"></i>删除
+                                                </button>
+                                            </div>
+                                            <table data-height="400" data-mobile-responsive="true"
+                                                   id="exampleTableEvents1">
+                                                <thead>
+                                                <tr>
+                                                    <th data-checkbox="true" data-field="state"></th>
+                                                    <th data-field="id">ID</th>
+                                                    <th data-field="type">设备名称</th>
+                                                    <th data-field="username">IP地址</th>
+                                                    <th data-field="password">SN号</th>
+                                                    <th data-field="username">密码</th>
+                                                    <th data-field="password">类型</th>
+                                                    <th data-field="username">型号</th>
+                                                </tr>
+                                                </thead>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div id="tab-3" class="tab-pane">
+                    <div class="panel-body">
+                        <strong>移动设备优先</strong>
+                        <p>在 Bootstrap 2 中，我们对框架中的某些关键部分增加了对移动设备友好的样式。而在 Bootstrap 3
+                            中，我们重写了整个框架，使其一开始就是对移动设备友好的。这次不是简单的增加一些可选的针对移动设备的样式，而是直接融合进了框架的内核中。也就是说，Bootstrap
+                            是移动设备优先的。针对移动设备的样式融合进了框架的每个角落，而不是增加一个额外的文件。</p>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</div>
+<!-- 全局js -->
+<script th:src="@{/js/jquery.min.js?v=2.1.4}"></script>
+<script th:src="@{/js/bootstrap.min.js?v=3.3.6}"></script>
+<!-- 自定义js -->
+<script th:src="@{/js/content.js?v=1.0.0}"></script>
+
+
+<!-- Bootstrap table -->
+<script th:src="@{/js/plugins/bootstrap-table/bootstrap-table.min.js}"></script>
+<script th:src="@{/js/plugins/bootstrap-table/bootstrap-table-mobile.min.js}"></script>
+<script th:src="@{/js/plugins/bootstrap-table/locale/bootstrap-table-zh-CN.min.js}"></script>
+
+<!-- Peity -->
+<script th:src="@{/js/demo/bootstrap-table-demo.js}"></script>
+
+<!-- layer javascript -->
+<script th:src="@{/js/plugins/layer/layer.min.js}"></script>
+<script>
+$(document).ready(function(){
+    $("#parentIframe").click(function(){
+        //iframe层-父子操作
+        layer.open({
+          type: 2,
+          title: '添加',
+          area: ['600px', '550px'],
+          fixed: false, //不固定
+          maxmin: true,
+          content: '/project/addSubpackage'
+        });
+    });
+});
+
+
+
+
+
+
+
+
+</script>
+</body>
+
+</html>

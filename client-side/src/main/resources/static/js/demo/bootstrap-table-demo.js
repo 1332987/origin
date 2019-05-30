@@ -102,6 +102,27 @@ function buildTable($el, cells, rows) {
       }
     });
 
+    $('#exampleTableEvents1').bootstrapTable({
+      url: "/tableT",
+      search : false, //显示搜索框
+      clickToSelect : true, //是否启用点击选中行
+      pagination: true,
+      showRefresh: true,
+      showToggle: true,
+      showColumns: true,
+      showExport : true,
+      exportDataType : "basic", //basic', 'all', 'selected'.
+      iconSize: 'outline',
+      cardView : false,
+      smartDisplay : true,
+      uniqueId : "id", //每一行的唯一标识，一般为主键列
+      toolbar: '#exampleTableEventsToolbar1',
+      icons: {
+        refresh: 'glyphicon-repeat',
+        toggle: 'glyphicon-list-alt',
+        columns: 'glyphicon-list'
+      }
+    });
 
     var $result = $('#examplebtTableEventsResult');
 

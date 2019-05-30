@@ -45,26 +45,26 @@
                     </a>
                     <ul class="nav nav-second-level">
                         <li>
-                            <a class="J_menuItem" th:href="@{project/info}">项目信息管理</a>
+                            <a class="J_menuItem" th:href="@{/project/info}">项目信息管理</a>
                         </li>
                         <li>
-                            <a class="J_menuItem" th:href="@{project/subpackage}">分包信息管理</a>
+                            <a class="J_menuItem" th:href="@{/project/subpackage}">分包信息管理</a>
                         </li>
                     </ul>
 
                 </li>
                 <li>
-                    <a class="J_menuItem" href="layouts.html">
+                    <a href="#">
                         <i class="fa fa-columns"></i>
                         <span class="nav-label">人员管理</span>
                         <span class="fa arrow"></span>
                     </a>
                     <ul class="nav nav-second-level">
                         <li>
-                            <a class="J_menuItem" href="index_v1.html" data-index="0">字典管理</a>
+                            <a class="J_menuItem" th:href="@{/people/dictionaries}" data-index="0">字典管理</a>
                         </li>
                         <li>
-                            <a class="J_menuItem" th:href="@{project/info}">人员管理</a>
+                            <a class="J_menuItem" th:href="@{/people/management}">人员管理</a>
                         </li>
                     </ul>
                 </li>
@@ -76,7 +76,7 @@
                     </a>
                     <ul class="nav nav-second-level">
                         <li>
-                            <a class="J_menuItem" href="graph_echarts.html">设备管理</a>
+                            <a class="J_menuItem" th:href="@{/device/management}">设备管理</a>
                         </li>
                     </ul>
                 </li>
@@ -88,9 +88,9 @@
                         <span class="fa arrow"></span>
                     </a>
                     <ul class="nav nav-second-level">
-                        <li><a class="J_menuItem" href="mailbox.html">通道权限</a>
+                        <li><a class="J_menuItem" th:href="@{/access/aisle}">通道权限</a>
                         </li>
-                        <li><a class="J_menuItem" href="mail_detail.html">记录查询</a>
+                        <li><a class="J_menuItem" th:href="@{/access/record}">记录查询</a>
                         </li>
                     </ul>
                 </li>
@@ -101,22 +101,22 @@
                         <span class="fa arrow"></span>
                     </a>
                     <ul class="nav nav-second-level">
-                        <li><a class="J_menuItem" href="form_basic.html">班次/排班</a>
+                        <li><a class="J_menuItem" th:href="@{/salary/scheduling}">班次/排班</a>
                         </li>
-                        <li><a class="J_menuItem" href="form_validate.html">个人考勤报表</a>
+                        <li><a class="J_menuItem" th:href="@{/salary/persons}">个人考勤报表</a>
                         </li>
-                        <li><a class="J_menuItem" href="form_advanced.html">班组考勤报表</a>
+                        <li><a class="J_menuItem" th:href="@{/salary/classess}">班组考勤报表</a>
                         </li>
                     </ul>
                 </li>
                 <li>
-                    <a href="#">
+                    <a class="J_menuItem" th:href="@{/report/formss}">
                         <i class="fa fa-desktop"></i>
                         <span class="nav-label">报表中心</span>
                     </a>
                 </li>
                 <li>
-                    <a href="#"><i class="fa fa-flask"></i> <span class="nav-label">来访登记</span><span
+                    <a th:href="@{/report/formss}"><i class="fa fa-flask"></i> <span class="nav-label">来访登记</span><span
                             class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
                         <li><a class="J_menuItem" href="typography.html">来访登记</a>

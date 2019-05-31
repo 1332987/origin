@@ -20,6 +20,12 @@
             <artifactId>common</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
+        <!-- 中华人民共和国行政区划代码 -->
+        <dependency>
+            <groupId>com.takwolf</groupId>
+            <artifactId>gb2260</artifactId>
+            <version>0.0.2</version>
+        </dependency>
     </dependencies>
 
 </project>

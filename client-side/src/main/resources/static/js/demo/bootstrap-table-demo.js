@@ -81,7 +81,7 @@ function buildTable($el, cells, rows) {
   // ------------------------------
   (function() {
     $('#exampleTableEvents').bootstrapTable({
-      url: "/tableT",
+      url: "/project/tableT",
       search : false, //显示搜索框
       clickToSelect : true, //是否启用点击选中行
       pagination: true,

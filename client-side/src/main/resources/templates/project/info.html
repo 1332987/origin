@@ -16,10 +16,6 @@
             border: 0;
             width: auto;
         }
-
-
-
-
 </style>
 <body class="gray-bg">
 
@@ -27,44 +23,45 @@
     <div class="col-sm-8">
         <div class="ibox float-e-margins">
             <div class="ibox-content">
-                <form class="form-inline" th:action="@{/project/updateFrom}">
+                <form class="form-inline" id="formProject" th:action="@{/project/updateFrom}">
                     <fieldset>
                         <legend>总承包企业</legend>
                         <div class="col-sm-6 form-group">
                             <label class="exampleInputName2"><b>社会信用代码/组织机构代码:</b></label>
-                            <p class="form-control-static" th:text="${enterprise.corpCode}">.</p>
+                            <p class="form-control-static" th:text="${enterprise?.corpCode}">.</p>
                         </div>
                         <div class="col-sm-6  form-group">
                             <label class="exampleInputName2"><b>企业名称:</b></label>
-                            <p class="form-control-static" th:text="${enterprise.corpName}">.</p>
+                            <p class="form-control-static" th:text="${enterprise?.corpName}">.</p>
                         </div>
                         <div class="col-sm-6 form-group">
                             <label class="exampleInputName2">企业注册地区:</label>
                             <p class="form-control-static"
-                               th:text="${enterprise.sheng}+${enterprise.shi}+${enterprise.qu}">.</p>
+                               th:text="${enterprise?.sheng}+${enterprise?.shi}+${enterprise?.qu}">.</p>
                         </div>
                         <div class="col-sm-6 form-group">
                             <label class="exampleInputName2">经营地址:</label>
-                            <p class="form-control-static" th:text="${enterprise.address}">.</p>
+                            <p class="form-control-static" th:text="${enterprise?.address}">.</p>
                         </div>
                         <div class="col-sm-6 form-group">
                             <label class="exampleInputName2">注册日期：</label>
-                            <p class="form-control-static" th:text="${enterprise.registerDate}">.</p>
+                            <p class="form-control-static" th:text="${enterprise?.registerDate}">.</p>
                         </div>
                         <div class="col-sm-6 form-group">
                             <label class="exampleInputName2"></label>联系人姓名:</label>
-                            <p class="form-control-static" th:text="${enterprise.linkman}">.</p>
+                            <p class="form-control-static" th:text="${enterprise?.linkman}">.</p>
                         </div>
                         <div class="col-sm-6 form-group">
                             <label class="exampleInputName2">联系人电话:</label>
-                            <p class="form-control-static" th:text="${enterprise.linkTel}">.</p>
+                            <p class="form-control-static" th:text="${enterprise?.linkTel}">.</p>
                         </div>
                     </fieldset>
                     <fieldset>
                         <legend>项目详情</legend>
                         <div class="form-group">
                             <label for="projectCode">项目编号</label>
-                            <input class="form-control" id="projectCode" name="projectCode" placeholder="项目编号"
+                            <input class="form-control" minlength="2" aria-required="true" id="projectCode"
+                                   name="projectCode" placeholder="项目编号"
                                    type="text">
                         </div>
                         <div class="form-group">
@@ -85,11 +82,11 @@
                         <div class="form-group">
                             <label for="buildPlanNum">建设工程规划许可证编号:</label>
                             <input type="text" class="form-control" id="buildPlanNum" name="buildPlanNum"
-                                   placeholder="Jane Doe">
+                                   placeholder="建设工程规划许可证编号">
                         </div>
                         <div class="form-group">
                             <label for="prjPlanNum">建设用地规划许可证编号:</label>
-                            <input type="text" class="form-control" id="prjPlanNum" name="prjPlanNum"
+                            <input type="text" class="form-control" id="prjPlanNum" name="建设用地规划许可证编号"
                                    placeholder="Jane Doe">
                         </div>
                         <div class="form-group">
@@ -231,18 +228,14 @@
 <!-- layerDate plugin javascript -->
 <script th:src="@{/js/plugins/layer/laydate/laydate.js}"></script>
 <script th:src="@{/js/distpicker.js}"></script>
+
+<!-- jQuery Validation plugin javascript-->
+<script th:src="@{/js/plugins/validate/jquery.validate.min.js}"></script>
+<script th:src="@{/js/plugins/validate/messages_zh.min.js}"></script>
+<!-- GITTER -->
+<script th:src="@{/js/plugins/gritter/jquery.gritter.min.js}"></script>
+
 <script>
-        //外部js调用
-        laydate({
-            elem: '#hello', //目标元素。由于laydate.js封装了一个轻量级的选择器引擎，因此elem还允许你传入class、tag但必须按照这种方式 '#id .class'
-            event: 'focus' //响应事件。如果没有传入event，则按照默认的click
-        });
-        date(start);
-        laydate(end);
-
-
-
-
 </script>
 </body>
 

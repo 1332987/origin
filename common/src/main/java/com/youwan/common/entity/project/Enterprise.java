@@ -2,7 +2,6 @@ package com.youwan.common.entity.project;
 
 import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -13,7 +12,7 @@ import java.util.Date;
 @Data
 @Entity
 @Table(name = "we_enterprise", uniqueConstraints = @UniqueConstraint(columnNames = "corpCode"))
-@JsonIgnoreProperties(value = {"id"}, ignoreUnknown = true)
+//@JsonIgnoreProperties(value = {"id"}, ignoreUnknown = true)
 public class Enterprise implements Serializable {
     // 主键ID
     @Id
@@ -36,10 +35,10 @@ public class Enterprise implements Serializable {
     private String linkman;
     // 联系人办公电话
     private String linkTel;
-    // 联系人办公电话
+    // 省
     private String sheng;
-    // 联系人办公电话
+    // 市
     private String shi;
-    // 联系人办公电话
+    // 区
     private String qu;
 }

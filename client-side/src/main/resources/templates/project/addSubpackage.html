@@ -10,137 +10,96 @@
     <div class="col-sm-6">
         <div class="ibox float-e-margins">
             <div class="ibox-content">
-                <form class="form-inline">
+                <form class="form-inline" th:action="@{/project/addSubpackageP}">
                     <div class="form-group">
-                        <label for="exampleInputName2">统一社会信用代码/组织机构代码:</label>
-                        <input type="text" class="form-control" id="exampleInputName2" placeholder="Jane Doe">
+                        <label for="projectCode">项目编码:</label>
+                        <input type="text" class="form-control" id="projectCode" name="projectCode" placeholder="项目编码">
                     </div>
                     <div class="form-group">
-                        <label for="exampleInputEmail2">分包企业名称</label>
-                        <input class="form-control" id="exampleInputEmail2" placeholder="jane.doe@example.com"
-                               type="email">
+                        <label for="corpCode">统一社会信用代码</label>
+                        <input class="form-control" id="corpCode" name="corpCode" placeholder="统一社会信用代码"
+                               type="text">
                     </div>
                     <div class="form-group">
-                        <label class="exampleInputName2">注册日期：</label>
+                        <label class="exampleInputName2">企业名称：</label>
                         <div class="col-sm-10">
-                            <input id="hello" class="laydate-icon form-control layer-date">
+                            <input type="text" id="corpName" name="corpName" placeholder="企业名称"
+                                   class="laydate-icon form-control layer-date">
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="exampleInputName2">公司地址</label>
-                        <select class="form-control">
-                            <option>1</option>
-                            <option>2</option>
-                            <option>3</option>
-                            <option>4</option>
-                            <option>5</option>
-                        </select>
-                        <select class="form-control">
-                            <option>1</option>
-                            <option>2</option>
-                            <option>3</option>
-                            <option>4</option>
-                            <option>5</option>
-                        </select>
-                        <select class="form-control">
-                            <option>1</option>
-                            <option>2</option>
-                            <option>3</option>
-                            <option>4</option>
-                            <option>5</option>
+                        <label for="corpType">建筑类型</label>
+                        <select class="form-control" id="corpType" name="corpType">
+                            <option value="001">专业分包</option>
+                            <option value="002">设备分包</option>
+                            <option value="003">材料分包</option>
+                            <option value="004">后勤服务</option>
+                            <option value="005">特殊设备</option>
+                            <option value="006">劳务分包</option>
+                            <option value="007">监理</option>
+                            <option value="008">建设单位</option>
+                            <option value="009">总承包单位</option>
+                            <option value="010">勘察</option>
+                            <option value="011">设计单位</option>
+                            <option value="012">其它</option>
                         </select>
                     </div>
                     <div class="form-group">
-                        <label for="exampleInputEmail2">建筑类型</label>
-                        <select class="form-control">
-                            <option>1</option>
-                            <option>2</option>
-                            <option>3</option>
-                            <option>4</option>
-                            <option>5</option>
+                        <label for="entryTime">进场时间:</label>
+                        <input class="form-control" id="entryTime" name="entryTime" placeholder="进场时间"
+                               type="text">
+                    </div>
+                    <div class="form-group">
+                        <label for="exitTime">退场时间:</label>
+                        <input class="form-control" id="exitTime" name="exitTime" placeholder="退场时间"
+                               type="text">
+                    </div>
+                    <div class="form-group">
+                        <label for="pmName">项目经理名称:</label>
+                        <input class="form-control" id="pmName" name="pmName" placeholder="项目经理名称"
+                               type="text">
+                    </div>
+                    <div class="form-group">
+                        <label for="pmIDCardType">项目经理证件类型</label>
+                        <select class="form-control" id="pmIDCardType" name="pmIDCardType">
+                            <option value="01">居民身份证</option>
+                            <option value="02">军官证</option>
+                            <option value="03">武警警官证</option>
+                            <option value="04">士兵证</option>
+                            <option value="05">军队离退休干部证</option>
+                            <option value="06">残疾人证</option>
+                            <option value="07">残疾军人证（1-8 级）</option>
+                            <option value="08">护照</option>
+                            <option value="09">港澳同胞回乡证</option>
+                            <option value="10">港澳居民来往内地通行证</option>
+                            <option value="11">中华人民共和国往来港澳通行证</option>
+                            <option value="12">台湾居民来往大陆通行证</option>
+                            <option value="13">大陆居民往来台湾通行证</option>
+                            <option value="14">外交官证</option>
+                            <option value="15">领事馆证</option>
+                            <option value="16">海员证</option>
+                            <option value="17">香港身份证</option>
+                            <option value="18">台湾身份证</option>
+                            <option value="19">澳门身份证</option>
+                            <option value="20">外国人身份证件</option>
+                            <option value="21">高校毕业生自主创业证</option>
+                            <option value="22">就业失业登记证</option>
+                            <option value="23">台胞证</option>
+                            <option value="24">退休证</option>
+                            <option value="25">离休证</option>
+                            <option value="99">其它证件</option>
                         </select>
                     </div>
                     <div class="form-group">
-                        <label for="exampleInputEmail2">经营地址</label>
-                        <input class="form-control" id="exampleInputEmail2" placeholder="jane.doe@example.com"
-                               type="email">
+                        <label for="pmIDCardNumber">项目经理证件号码:</label>
+                        <input class="form-control" id="pmIDCardNumber" name="pmIDCardNumber" placeholder="项目经理证件号码"
+                               type="text">
                     </div>
                     <div class="form-group">
-                        <label for="exampleInputEmail2">分包企业编号</label>
-                        <input class="form-control" id="exampleInputEmail2" placeholder="jane.doe@example.com"
-                               type="email">
-                    </div>
-                    <div class="form-group">
-                        <label for="exampleInputEmail2">分包项目名称</label>
-                        <input class="form-control" id="exampleInputEmail2" placeholder="jane.doe@example.com"
-                               type="email">
-                    </div>
-                    <div class="form-group">
-                        <label for="exampleInputEmail2">合同造价</label>
-                        <input class="form-control" id="exampleInputEmail2" placeholder="jane.doe@example.com"
-                               type="email">
-                    </div>
-                    <div class="form-group">
-                        <label for="exampleInputEmail2">合同内容</label>
-                        <input class="form-control" id="exampleInputEmail2" placeholder="jane.doe@example.com"
-                               type="tel">
-                    </div>
-                    <div class="form-group">
-                        <label for="exampleInputName2">联系电话</label>
-                        <input type="text" class="form-control" id="exampleInputName2" placeholder="Jane Doe">
-                        <label for="exampleInputName2">传真</label>
-                        <input type="text" class="form-control" id="exampleInputName2" placeholder="Jane Doe">
-                        <label for="exampleInputName2">营业执照编号</label>
-                        <input type="text" class="form-control" id="exampleInputName2" placeholder="Jane Doe">
-                    </div>
-                    <div class="form-group">
-                        <label for="exampleInputEmail2">企业地址</label>
-                        <input class="form-control" id="exampleInputEmail2" placeholder="jane.doe@example.com"
-                               type="email">
+                        <label for="pmPhone">项目经理电话:</label>
+                        <input type="text" class="form-control" id="pmPhone" name="pmPhone" placeholder="项目经理电话">
                     </div>
 
-                    <div class="form-group">
-                        <label class="exampleInputName2">分包负责人</label>
-                        <input class="form-control" id="exampleInputEmail2" placeholder="jane.doe@example.com"
-                               type="email">
-                    </div>
-                    <div class="form-group">
-                        <label class="exampleInputName2">分包负责人电话</label>
-                        <input class="form-control" id="exampleInputEmail2" placeholder="jane.doe@example.com"
-                               type="email">
-                    </div>
-                    <div class="form-group">
-                        <label class="exampleInputName2">劳务管理员</label>
-                        <input class="form-control" id="exampleInputEmail2" placeholder="jane.doe@example.com"
-                               type="email">
-                        <label class="exampleInputName2">劳务管理员电话</label>
-                        <input class="form-control" id="exampleInputEmail2" placeholder="jane.doe@example.com"
-                               type="email">
-                    </div>
-                    <div class="form-group">
-                        <label class="exampleInputName2">合同开始日期</label>
-                        <div class="col-sm-10">
-                            <input id="hello" class="laydate-icon form-control layer-date">
-                        </div>
-                        <label class="exampleInputName2">合同结束日期</label>
-                        <div class="col-sm-10">
-                            <input id="hello" class="laydate-icon form-control layer-date">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="exampleInputName2">是否在区建委二次备案</label>
-                        <label class="checkbox-inline">
-                            <input type="checkbox" value="option1" id="inlineCheckbox1">是</label>
-
-                        <label class="exampleInputName2">是否建立三个账户</label>
-                        <label class="checkbox-inline">
-                            <input type="checkbox" value="option3" id="inlineCheckbox3">是</label>
-                    </div>
-                    <div class="form-group">
-                        <label class="exampleInputName2">承包工程完成百分比</label>
-                        <input class="form-control" id="exampleInputEmail2" placeholder=""
-                               type="email">%
-                    </div>
                     <div class="form-group">
                         <button class="btn btn-primary" type="submit">保存内容</button>
                         <button class="btn btn-white" type="submit">取消</button>
@@ -161,10 +120,6 @@
         });
         date(start);
         laydate(end);
-
-
-
-
 
 </script>
 </body>

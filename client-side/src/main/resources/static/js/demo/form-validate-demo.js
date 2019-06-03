@@ -22,8 +22,6 @@
 
         //以下为官方示例
         $().ready(function () {
-            // validate the comment form when it is submitted
-            $("#commentForm").validate();
 
             // validate signup form on keyup and submit
             var icon = "<i class='fa fa-times-circle'></i> ";
@@ -57,12 +55,20 @@
                 }
             });
 
-            // propose username by combining first- and lastname
-            $("#username").focus(function () {
-                var firstname = $("#firstname").val();
-                var lastname = $("#lastname").val();
-                if (firstname && lastname && !this.value) {
-                    this.value = firstname + "." + lastname;
+            // validate signup form on keyup and submit
+            var icon = "<i class='fa fa-times-circle'></i> ";
+            $("#formProject").validate({
+                rules: {
+                    projectCode: {
+                        required: true,
+                        minlength: 2
+                    }
+                },
+                messages: {
+                    projectCode: {
+                        required: icon + "请输入您的用户名",
+                        minlength: icon + "用户名必须两个字符以上"
+                    }
                 }
             });
         });

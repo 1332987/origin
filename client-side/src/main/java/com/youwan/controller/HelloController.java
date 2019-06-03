@@ -133,13 +133,6 @@ public class HelloController {
         return date;
     }
 
-    @ResponseBody
-    @RequestMapping("tableT")
-    public String tableT() {
-
-        return "[{\"id\": \"1\",\"type\": \"超管\",\"username\": \"admin\",\"password\": \"asSelect\"},{\"id\": \"1\",\"type\": \"超管\",\"username\": \"admin\",\"password\": \"asSelect\"}" +
-                "]";
-    }
 
     @ResponseBody
     @RequestMapping("opDataList")

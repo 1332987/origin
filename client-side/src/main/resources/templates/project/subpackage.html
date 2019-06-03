@@ -3,7 +3,6 @@
 <head th:replace="/common/template :: header(~{::title},~{::link},~{::style})">
     <link rel="stylesheet" th:href="@{/css/plugins/bootstrap-table/bootstrap-table.min.css}">
 </head>
-<body>
 <body class="gray-bg">
 <div class="wrapper wrapper-content animated fadeInRight">
     <!-- Panel Other -->
@@ -32,10 +31,16 @@
                                 <thead>
                                 <tr>
                                     <th data-checkbox="true" data-field="state"></th>
-                                    <th data-field="id">ID</th>
-                                    <th data-field="type">类型</th>
-                                    <th data-field="username">账号</th>
-                                    <th data-field="password">密码</th>
+                                    <th data-field="id">id</th>
+                                    <th data-field="projectCode">项目编码</th>
+                                    <th data-field="corpCode">统一社会信用代码</th>
+                                    <th data-field="corpName">参建类型</th>
+                                    <th data-field="corpType">进场时间</th>
+                                    <th data-field="entryTime">退场时间</th>
+                                    <th data-field="pmName">项目经理名称</th>
+                                    <th data-field="pmIDCardType">项目经理证件类型</th>
+                                    <th data-field="pmIDCardNumber">项目经理证件号码</th>
+                                    <th data-field="pmPhone">项目经理电话</th>
                                 </tr>
                                 </thead>
                             </table>

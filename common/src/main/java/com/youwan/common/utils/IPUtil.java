@@ -1,6 +1,9 @@
 package com.youwan.common.utils;
 
+import cn.hutool.core.thread.ThreadUtil;
 import com.alibaba.fastjson.JSONObject;
+import com.youwan.common.entity.device.Management;
+import com.youwan.common.utils.http.HttpUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 
@@ -8,13 +11,11 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-
 
 @Slf4j
 public class IPUtil {
+
     /**
      * StringUtils.trimToEmpty去空格
      * 获取局域网内所有ip
@@ -26,6 +27,14 @@ public class IPUtil {
         Runtime r = Runtime.getRuntime();
         Process p;
         try {
+            for (int i = 0; i <= 255; i++) {
+                Runnable runnable = () -> {
+                    Runtime r1 = Runtime.getRuntime();
+                };
+
+                Thread thread = new Thread(runnable);
+                thread.start();
+            }
             p = r.exec("arp -a");
             BufferedReader br = new BufferedReader(new InputStreamReader(p
                     .getInputStream(), "GBK"));
@@ -43,7 +52,9 @@ public class IPUtil {
                     if (count > 2) {
                         //有效IP
                         String[] str = inline.split(" {4}");
-                        list.add(StringUtils.trimToEmpty(str[0]));
+                        if (StringUtils.substring(StringUtils.trimToEmpty(str[0]), 0, 1).equals("1"))
+                            list.add(StringUtils.trimToEmpty(str[0]));
+                        log.info(StringUtils.trimToEmpty(str[0]));
                     }
                 }
             }
@@ -61,24 +72,35 @@ public class IPUtil {
      *
      * @return
      */
-    public static List<Map<String, String>> getMachine() {
-        List<String> list = IPUtil.getIPs();
+    public static List<Management> getMachine(List<String> list) throws InterruptedException {
         log.info(list.toString());
-        List<Map<String, String>> listM = new ArrayList<>();
+        List<Management> listM = new ArrayList<>();
         for (String s : list) {
-            String date = NetUtil.post("http://" + s + ":8090/getDeviceKey", "");
-            if (!StringUtils.isBlank(date)) {
-                Map<String, String> map = new HashMap<>();
-                JSONObject jsStr = JSONObject.parseObject(StringUtils.trimToEmpty(date));
-                log.info(jsStr.toJSONString());
-                map.put("ip", s);
-                map.put("sn", jsStr.get("data").toString());
-                map.put("pas", "12345678");
-                map.put("model", "8090");
-                listM.add(map);
-                System.out.println(listM.size());
-            }
+            ThreadUtil.execute(new Runnable() {
+                public void run() {
+                    String date = "";
+                    try {
+                        date = HttpUtil.post("http://" + s + ":8090/getDeviceKey", "", 2000);
+                    } catch (Exception e) {
+                        log.error(e.getMessage());
+                    }
+                    if (!StringUtils.isBlank(date)) {
+                        Management map = new Management();
+                        JSONObject jsStr = JSONObject.parseObject(StringUtils.trimToEmpty(date));
+                        log.info("date:" + jsStr.toJSONString());
+                        map.setIp(s);
+                        map.setSn(jsStr.get("data").toString());
+                        map.setPas("12345678");
+                        map.setModel("8090");
+                        listM.add(map);
+                        log.info(list.size() + "map" + map.toString());
+                    }
+                }
+            });
         }
+
+        log.info("获取设备完毕");
+
         return listM;
     }
 }

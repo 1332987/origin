@@ -348,6 +348,7 @@ public class NetUtil extends IoHelper {
         return getResponse(conn, false, responseHandler == null ? NetUtil::byteStream2stringStream : responseHandler);
     }
 
+
     /**
      * 多段上传
      *
@@ -403,8 +404,8 @@ public class NetUtil extends IoHelper {
             conn.setDoOutput(false);
             conn.setDoInput(true);
             //设置连接超时时间和读取超时时间
-            conn.setConnectTimeout(10000);
-            conn.setReadTimeout(10000);
+            conn.setConnectTimeout(3000);
+            conn.setReadTimeout(3000);
             conn.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
             //连接服务器
             conn.connect();

@@ -29,7 +29,7 @@
                                             <div class="example">
                                                 <div class="btn-group hidden-xs" id="exampleTableEventsToolbar"
                                                      role="group">
-                                                    <button class="btn btn-outline btn-default" id="parentIframe"
+                                                    <button class="btn btn-outline btn-default" id=""
                                                             type="button">
                                                         <i aria-hidden="true" class="glyphicon glyphicon-plus"></i>添加
                                                     </button>
@@ -41,17 +41,17 @@
                                                     </button>
                                                 </div>
                                                 <table data-height="400" data-mobile-responsive="true"
-                                                       id="exampleTableEvents">
+                                                       id="management">
                                                     <thead>
                                                     <tr>
                                                         <th data-checkbox="true" data-field="state"></th>
                                                         <th data-field="id">ID</th>
-                                                        <th data-field="type">设备名称</th>
-                                                        <th data-field="username">IP地址</th>
-                                                        <th data-field="password">SN号</th>
-                                                        <th data-field="username">密码</th>
-                                                        <th data-field="password">类型</th>
-                                                        <th data-field="username">型号</th>
+                                                        <th data-field="name">设备名称</th>
+                                                        <th data-field="ip">IP地址</th>
+                                                        <th data-field="sn">SN号</th>
+                                                        <th data-field="pas">密码</th>
+                                                        <th data-field="type">类型</th>
+                                                        <th data-field="model">型号</th>
                                                     </tr>
                                                     </thead>
                                                 </table>
@@ -88,17 +88,17 @@
                                                                 <fieldset>
                                                                     <legend>修改密码</legend>
                                                                     <div class="form-group">
-                                                                        <label for="exampleInputName2">原密码:</label>
+                                                                        <label>原密码:</label>
                                                                         <input type="text" class="form-control"
-                                                                               id="exampleInputName2"
-                                                                               placeholder="Jane Doe">
+                                                                               id="pas"
+                                                                               placeholder="原密码">
                                                                     </div>
                                                                     <div class="form-group">
-                                                                        <label for="exampleInputEmail2">新密码:</label>
+                                                                        <label>新密码:</label>
                                                                         <input class="form-control"
-                                                                               id="exampleInputEmail2"
-                                                                               placeholder="jane.doe@example.com"
-                                                                               type="email">
+                                                                               id="pas2"
+                                                                               placeholder="新密码"
+                                                                               type="text">
                                                                     </div>
                                                                 </fieldset>
                                                                 <div class="form-group">
@@ -113,50 +113,39 @@
                                                                     <div class="form-group">
                                                                         <label for="exampleInputName2">设备IP:</label>
                                                                         <input type="text" class="form-control"
-                                                                               id="exampleInputName2"
-                                                                               placeholder="Jane Doe">
+                                                                               id="ip"
+                                                                               placeholder="设备ip">
                                                                     </div>
                                                                     <div class="form-group">
                                                                         <label for="exampleInputEmail2">子网掩码:</label>
                                                                         <input class="form-control"
-                                                                               id="exampleInputEmail2"
-                                                                               placeholder="jane.doe@example.com"
+                                                                               id="zwym"
+                                                                               placeholder="255.255.255.0"
                                                                                type="email">
                                                                     </div>
                                                                     <div class="form-group">
                                                                         <label for="exampleInputEmail2">网关:</label>
                                                                         <input class="form-control"
-                                                                               id="exampleInputEmail2"
-                                                                               placeholder="jane.doe@example.com"
-                                                                               type="email">
+                                                                               id="wangg"
+                                                                               placeholder="网关"
+                                                                               type="text">
                                                                     </div>
                                                                     <div class="form-group">
                                                                         <label for="exampleInputEmail2">DNS:</label>
                                                                         <input class="form-control"
-                                                                               id="exampleInputEmail2"
-                                                                               placeholder="jane.doe@example.com"
-                                                                               type="email">
+                                                                               id="dns"
+                                                                               placeholder="8.8.8.8"
+                                                                               type="text">
                                                                     </div>
                                                                     <div class="form-group">
-                                                                        <label for="exampleInputEmail2">DNS:</label>
-                                                                        <input class="form-control"
-                                                                               id="exampleInputEmail2"
-                                                                               placeholder="jane.doe@example.com"
-                                                                               type="email">
-                                                                    </div>
-                                                                    <div class="form-group">
-                                                                        <label class="col-sm-2 control-label">IP获取模式</label>
+                                                                        <label class="control-label">IP获取模式</label>
 
-                                                                        <div class="col-sm-10">
                                                                             <select class="form-control m-b"
                                                                                     name="account">
-                                                                                <option>选项 1</option>
-                                                                                <option>选项 2</option>
-                                                                                <option>选项 3</option>
-                                                                                <option>选项 4</option>
+                                                                                <option>手动设置</option>
+                                                                                <option>自动获取</option>
                                                                             </select>
                                                                         </div>
-                                                                    </div>
                                                                 </fieldset>
                                                                 <div class="form-group">
                                                                     <button class="btn btn-primary" type="submit">确认修改
@@ -630,8 +619,6 @@
 <script th:src="@{/js/plugins/bootstrap-table/bootstrap-table-mobile.min.js}"></script>
 <script th:src="@{/js/plugins/bootstrap-table/locale/bootstrap-table-zh-CN.min.js}"></script>
 
-<!-- Peity -->
-<script th:src="@{/js/demo/bootstrap-table-demo.js}"></script>
 
 <!-- layer javascript -->
 <script th:src="@{/js/plugins/layer/layer.min.js}"></script>
@@ -649,11 +636,48 @@ $(document).ready(function(){
         });
     });
 });
+</script>
+<script>
 
+(function(document, window, $) {
+  'use strict';
+  (function() {
+    var bt_data = [];
+  })();
+  (function() {
+    $('#management').bootstrapTable({
+      url: "/device/getManagement",
+      search : false, //显示搜索框
+      clickToSelect : true, //是否启用点击选中行
+      pagination: true,
+      showRefresh: true,
+      showToggle: true,
+      showColumns: true,
+      showExport : true,
+      exportDataType : "basic", //basic', 'all', 'selected'.
+      iconSize: 'outline',
+      cardView : false,
+      smartDisplay : true,
+      uniqueId : "id", //每一行的唯一标识，一般为主键列
+      toolbar: '#exampleTableEventsToolbar',
+      icons: {
+        refresh: 'glyphicon-repeat',
+        toggle: 'glyphicon-list-alt',
+        columns: 'glyphicon-list'
+      }
+    });
 
+    var $result = $('#examplebtTableEventsResult');
 
-
-
+    $('#management').on('check.bs.table', function(e, name, args) {
+        $("#pas").val(name.pas);
+        $("#pas2").val(name.pas);
+        $("#ip").val(name.ip);
+        $("#wangg").val(name.ip);
+        alert();
+      });
+  })();
+})(document, window, jQuery);
 
 
 

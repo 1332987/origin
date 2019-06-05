@@ -29,11 +29,6 @@ public class HelloController {
     @Autowired
     private PersonalInformationDao personalInformationfDao;
 
-    @RequestMapping("index1")
-    public String index1(Model model) {
-        return "index1";
-    }
-
     @RequestMapping("renlian")
     public String renlian(Model model) {
         return "renlian";

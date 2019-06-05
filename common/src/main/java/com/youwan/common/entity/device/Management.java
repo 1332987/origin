@@ -6,10 +6,6 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 import javax.persistence.*;
 import java.io.Serializable;
 
-/**
- * @author 小懒虫
- * @date 2019/05/05
- */
 @Entity
 @Data
 @Table(name = "we_Management", uniqueConstraints = @UniqueConstraint(columnNames = "ip"))

@@ -10,6 +10,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.io.IOException;
+
 @Controller
 @Slf4j
 public class LoginController {
@@ -17,10 +19,6 @@ public class LoginController {
     @Autowired
     private UserDao userDao;
 
-    @RequestMapping("login")
-    public String login(Model model) {
-        return "login";
-    }
 
     @RequestMapping("indexs")
     @ResponseBody
@@ -37,7 +35,20 @@ public class LoginController {
 
     @RequestMapping("index")
     public String index(Model model) {
-        log.info("----------------------");
+        Runtime run = Runtime.getRuntime();
+        for (int i = 0; i <= 224; i++) {
+            String command = "ping -n 1  -w 30 192.168.1." + i;
+            Runnable runnable = () -> {
+                try {
+                    run.exec(command);
+//                    log.info("command："+command);
+                } catch (IOException e) {
+                    log.info(e.getMessage());
+                }
+            };
+            Thread thread = new Thread(runnable);
+            thread.start();
+        }
         return "index";
     }
 }

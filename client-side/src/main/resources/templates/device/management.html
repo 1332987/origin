@@ -2,6 +2,8 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head th:replace="/common/template :: header(~{::title},~{::link},~{::style})">
     <link rel="stylesheet" th:href="@{/css/plugins/bootstrap-table/bootstrap-table.min.css}">
+
+    <link th:href="@{/js/plugins/gritter/jquery.gritter.css}" rel="stylesheet">
 </head>
 <body class="gray-bg">
 <div class="row">
@@ -29,7 +31,7 @@
                                             <div class="example">
                                                 <div class="btn-group hidden-xs" id="exampleTableEventsToolbar"
                                                      role="group">
-                                                    <button class="btn btn-outline btn-default" id=""
+                                                    <button class="btn btn-outline btn-default" id="tj"
                                                             type="button">
                                                         <i aria-hidden="true" class="glyphicon glyphicon-plus"></i>添加
                                                     </button>
@@ -84,101 +86,105 @@
                                                 <div class="tab-content ">
                                                     <div id="tab-8" class="tab-pane active">
                                                         <div class="panel-body">
-                                                            <form class="form-inline">
+                                                            <form class="form-inline" id="fPas">
+                                                                <input type="text" id="zid" style="display:none;">
                                                                 <fieldset>
                                                                     <legend>修改密码</legend>
                                                                     <div class="form-group">
                                                                         <label>原密码:</label>
                                                                         <input type="text" class="form-control"
-                                                                               id="pas"
+                                                                               id="pas" name="pas"
                                                                                placeholder="原密码">
                                                                     </div>
                                                                     <div class="form-group">
                                                                         <label>新密码:</label>
                                                                         <input class="form-control"
-                                                                               id="pas2"
+                                                                               id="pas2" name="pas2"
                                                                                placeholder="新密码"
                                                                                type="text">
                                                                     </div>
                                                                 </fieldset>
                                                                 <div class="form-group">
-                                                                    <button class="btn btn-primary" type="submit">确认修改
+                                                                    <button class="btn btn-primary" type="button"
+                                                                            id="updateP">确认修改
                                                                     </button>
                                                                 </div>
                                                             </form>
 
-                                                            <form class="form-inline">
+                                                            <form class="form-inline" id="formNetInfo">
                                                                 <fieldset>
                                                                     <legend>修改网络参数</legend>
                                                                     <div class="form-group">
                                                                         <label for="exampleInputName2">设备IP:</label>
                                                                         <input type="text" class="form-control"
-                                                                               id="ip"
+                                                                               id="ip" name="ip"
                                                                                placeholder="设备ip">
                                                                     </div>
                                                                     <div class="form-group">
-                                                                        <label for="exampleInputEmail2">子网掩码:</label>
+                                                                        <label>子网掩码:</label>
                                                                         <input class="form-control"
-                                                                               id="zwym"
-                                                                               placeholder="255.255.255.0"
-                                                                               type="email">
+                                                                               id="subnetMask" name="subnetMask"
+                                                                               value="255.255.255.0"
+                                                                               type="text">
                                                                     </div>
                                                                     <div class="form-group">
-                                                                        <label for="exampleInputEmail2">网关:</label>
+                                                                        <label>网关:</label>
                                                                         <input class="form-control"
-                                                                               id="wangg"
+                                                                               id="gateway" name="gateway"
                                                                                placeholder="网关"
                                                                                type="text">
                                                                     </div>
                                                                     <div class="form-group">
-                                                                        <label for="exampleInputEmail2">DNS:</label>
+                                                                        <label>DNS:</label>
                                                                         <input class="form-control"
-                                                                               id="dns"
-                                                                               placeholder="8.8.8.8"
+                                                                               id="dns" name="dns"
+                                                                               value="8.8.8.8"
                                                                                type="text">
                                                                     </div>
                                                                     <div class="form-group">
                                                                         <label class="control-label">IP获取模式</label>
 
-                                                                            <select class="form-control m-b"
-                                                                                    name="account">
-                                                                                <option>手动设置</option>
-                                                                                <option>自动获取</option>
-                                                                            </select>
-                                                                        </div>
+                                                                        <select class="form-control m-b"
+                                                                                name="isDHCPMod">
+                                                                            <option value="2">手动设置</option>
+                                                                            <option value="1">自动获取</option>
+                                                                        </select>
+                                                                    </div>
                                                                 </fieldset>
                                                                 <div class="form-group">
-                                                                    <button class="btn btn-primary" type="submit">确认修改
+                                                                    <button class="btn btn-primary" id="setNetInfo"
+                                                                            type="button">确认修改
                                                                     </button>
                                                                 </div>
                                                             </form>
 
-                                                            <form class="form-inline">
+                                                            <form class="form-inline" id="fsetWifi">
                                                                 <fieldset>
                                                                     <legend>修改WIFI参数</legend>
                                                                     <div class="form-group">
-                                                                        <label for="exampleInputName2">wifi名称:</label>
+                                                                        <label>wifi名称:</label>
                                                                         <input type="text" class="form-control"
-                                                                               id="exampleInputName2"
-                                                                               placeholder="Jane Doe">
+                                                                               id="wifi"
+                                                                               placeholder="wifi名称:">
                                                                     </div>
                                                                     <div class="form-group">
-                                                                        <label for="exampleInputEmail2">wifi密码:</label>
+                                                                        <label>wifi密码:</label>
                                                                         <input class="form-control"
-                                                                               id="exampleInputEmail2"
-                                                                               placeholder="jane.doe@example.com"
-                                                                               type="email">
+                                                                               id="wifiP"
+                                                                               placeholder="wifi密码"
+                                                                               type="text">
                                                                     </div>
                                                                     <div class="form-group">
-                                                                        <label for="exampleInputEmail2">IP:</label>
+                                                                        <label>IP:</label>
                                                                         <input class="form-control"
-                                                                               id="exampleInputEmail2"
-                                                                               placeholder="jane.doe@example.com"
-                                                                               type="email">
+                                                                               id="wifiIp"
+                                                                               placeholder="ip"
+                                                                               type="text">
                                                                     </div>
                                                                 </fieldset>
                                                                 <div class="form-group">
-                                                                    <button class="btn btn-primary" type="submit">确认修改
+                                                                    <button class="btn btn-primary" id="setWifi"
+                                                                            type="button">确认修改
                                                                     </button>
                                                                 </div>
                                                             </form>
@@ -186,197 +192,169 @@
                                                     </div>
                                                     <div id="tab-9" class="tab-pane">
                                                         <div class="panel-body">
-                                                            <form class="form-inline">
+                                                            <form class="form-inline" id="fsetConfig">
                                                                 <fieldset>
                                                                     <legend>修改设备参数</legend>
-
-                                                                    <div class="col-sm-6">
-                                                                        <div class="form-group">
-                                                                            <label for="exampleInputName2">设备名称:</label>
-                                                                            <input type="text" class="form-control"
-                                                                                   id="exampleInputName2"
-                                                                                   placeholder="Jane Doe">
-                                                                        </div>
-                                                                        <div class="form-group">
-                                                                            <label for="exampleInputEmail2">识别距离:</label>
-                                                                            <div class="col-sm-10">
-                                                                                <select class="form-control m-b"
-                                                                                        name="account">
-                                                                                    <option>选项 1</option>
-                                                                                    <option>选项 2</option>
-                                                                                    <option>选项 3</option>
-                                                                                    <option>选项 4</option>
-                                                                                </select>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="form-group">
-                                                                            <label for="exampleInputEmail2">识别分数:</label>
-                                                                            <input class="form-control"
-                                                                                   id="exampleInputEmail2"
-                                                                                   placeholder="jane.doe@example.com"
-                                                                                   type="email">
-                                                                        </div>
-                                                                        <div class="form-group">
-                                                                            <label for="exampleInputEmail2">识别间隔:</label>
-                                                                            <input class="form-control"
-                                                                                   id="exampleInputEmail2"
-                                                                                   placeholder="jane.doe@example.com"
-                                                                                   type="email">
-                                                                        </div>
-                                                                        <div class="form-group">
-                                                                            <label for="exampleInputEmail2">开门延时:</label>
-                                                                            <input class="form-control"
-                                                                                   id="exampleInputEmail2"
-                                                                                   placeholder="jane.doe@example.com"
-                                                                                   type="email">
-                                                                        </div>
-                                                                        <div class="form-group">
-                                                                            <label for="exampleInputEmail2">串口模式:</label>
-                                                                            <select class="form-control m-b"
-                                                                                    name="account">
-                                                                                <option>选项 1</option>
-                                                                                <option>选项 2</option>
-                                                                                <option>选项 3</option>
-                                                                                <option>选项 4</option>
-                                                                            </select>
-                                                                        </div>
-                                                                        <div class="form-group">
-                                                                            <label for="exampleInputEmail2">串口自定义:</label>
-                                                                            <input class="form-control"
-                                                                                   id="exampleInputEmail2"
-                                                                                   placeholder="jane.doe@example.com"
-                                                                                   type="email">
-                                                                        </div>
-                                                                        <div class="form-group">
-                                                                            <label for="exampleInputName2">标语:</label>
-                                                                            <input type="text" class="form-control"
-                                                                                   id="exampleInputName2"
-                                                                                   placeholder="Jane Doe">
-                                                                        </div>
-                                                                        <div class="form-group">
-                                                                            <label for="exampleInputEmail2">公司简介:</label>
-                                                                            <input class="form-control"
-                                                                                   id="exampleInputEmail2"
-                                                                                   placeholder="jane.doe@example.com"
-                                                                                   type="email">
-                                                                        </div>
-                                                                        <div class="form-group">
-                                                                            <label for="exampleInputEmail2">韦根输出:</label>
-                                                                            <select class="form-control m-b"
-                                                                                    name="account">
-                                                                                <option>选项 1</option>
-                                                                                <option>选项 2</option>
-                                                                                <option>选项 3</option>
-                                                                                <option>选项 4</option>
-                                                                            </select>
-                                                                        </div>
-                                                                        <div class="form-group">
-                                                                            <label for="exampleInputEmail2">人证对比:</label>
-                                                                            <select class="form-control m-b"
-                                                                                    name="account">
-                                                                                <option>选项 1</option>
-                                                                                <option>选项 2</option>
-                                                                                <option>选项 3</option>
-                                                                                <option>选项 4</option>
-                                                                            </select>
-                                                                        </div>
+                                                                    <div class="form-group">
+                                                                        <label>设备名称:</label>
+                                                                        <input type="text" class="form-control"
+                                                                               id="companyName" name="companyName"
+                                                                               placeholder="设备名称">
                                                                     </div>
-                                                                    <div class="col-sm-6">
-                                                                        <div class="form-group">
-                                                                            <label for="exampleInputName2">语音模式:</label>
-                                                                            <select class="form-control m-b"
-                                                                                    name="account">
-                                                                                <option>选项 1</option>
-                                                                                <option>选项 2</option>
-                                                                                <option>选项 3</option>
-                                                                                <option>选项 4</option>
-                                                                            </select>
-                                                                        </div>
-                                                                        <div class="form-group">
-                                                                            <label for="exampleInputEmail2">语音自定义:</label>
-                                                                            <input class="form-control"
-                                                                                   id="exampleInputEmail2"
-                                                                                   placeholder="jane.doe@example.com"
-                                                                                   type="email">
-                                                                        </div>
-                                                                        <div class="form-group">
-                                                                            <label for="exampleInputEmail2">显示模式:</label>
-                                                                            <select class="form-control m-b"
-                                                                                    name="account">
-                                                                                <option>选项 1</option>
-                                                                                <option>选项 2</option>
-                                                                                <option>选项 3</option>
-                                                                                <option>选项 4</option>
-                                                                            </select>
-                                                                        </div>
-                                                                        <div class="form-group">
-                                                                            <label for="exampleInputEmail2">显示自定义:</label>
-                                                                            <input class="form-control"
-                                                                                   id="exampleInputEmail2"
-                                                                                   placeholder="jane.doe@example.com"
-                                                                                   type="email">
-                                                                        </div>
-                                                                        <div class="form-group">
-                                                                            <label for="exampleInputEmail2">多人脸检测:</label>
-                                                                            <select class="form-control m-b"
-                                                                                    name="account">
-                                                                                <option>选项 1</option>
-                                                                                <option>选项 2</option>
-                                                                                <option>选项 3</option>
-                                                                                <option>选项 4</option>
-                                                                            </select>
-                                                                        </div>
-                                                                        <div class="form-group">
-                                                                            <label for="exampleInputEmail2">陌生人开关:</label>
-                                                                            <select class="form-control m-b"
-                                                                                    name="account">
-                                                                                <option>选项 1</option>
-                                                                                <option>选项 2</option>
-                                                                                <option>选项 3</option>
-                                                                                <option>选项 4</option>
-                                                                            </select>
-                                                                        </div>
+                                                                    <div class="form-group">
+                                                                        <label>识别距离:</label>
+                                                                        <select class="form-control m-b"
+                                                                                name="identifyDistance">
+                                                                            <option value="0">无限制</option>
+                                                                            <option value="1">0.5米以内</option>
+                                                                            <option value="2">1米以内</option>
+                                                                            <option value="3">1.5米以内</option>
+                                                                            <option value="4">2米以内</option>
+                                                                            <option value="5">3米以内</option>
+                                                                            <option value="6">4米以内</option>
+                                                                        </select>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label>识别分数:</label>
+                                                                        <input class="form-control"
+                                                                               id="identifyScores" name="identifyScores"
+                                                                               placeholder="识别分数"
+                                                                               type="number" max="100" min="60">
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label>识别间隔:</label>
+                                                                        <input class="form-control"
+                                                                               id="saveIdentifyTime"
+                                                                               name="saveIdentifyTime"
+                                                                               placeholder="识别间隔"
+                                                                               type="number" min="0">
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label for="exampleInputName2">语音模式类型:</label>
+                                                                        <select class="form-control m-b"
+                                                                                name="ttsModType">
+                                                                            <option value="1">不需要语音播报</option>
+                                                                            <option value="2">播报名字</option>
+                                                                            <option value="100">自定义</option>
+                                                                        </select>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label>语音自定义:</label>
+                                                                        <input class="form-control"
+                                                                               id="ttsModContent" name="ttsModContent"
+                                                                               placeholder="语音自定义"
+                                                                               type="text">
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label>屏幕显示模式:</label>
+                                                                        <select class="form-control m-b"
+                                                                                name="displayModType">
+                                                                            <option value="1">显示名字</option>
+                                                                            <option value="100">自定义</option>
+                                                                        </select>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label>屏幕显示自定义:</label>
+                                                                        <input class="form-control"
+                                                                               name="displayModContent"
+                                                                               placeholder="屏幕显示自定义"
+                                                                               type="text">
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label>串口模式:</label>
+                                                                        <select class="form-control m-b"
+                                                                                name="comModType">
+                                                                            <option value="1">开门</option>
+                                                                            <option value="2">不输出</option>
+                                                                            <option value="3">输出人员id</option>
+                                                                            <option value="4">输出身份证/IC卡号idcardNum，
+                                                                            </option>
+                                                                            <option value="100">自定义</option>
+                                                                        </select>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label>串口自定义:</label>
+                                                                        <input class="form-control"
+                                                                               name="comModContent"
+                                                                               placeholder="串口自定义"
+                                                                               type="text">
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label>韦根输出:</label>
+                                                                        <input class="form-control"
+                                                                               name="wg"
+                                                                               placeholder="韦根输出"
+                                                                               type="text">
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label>标语:</label>
+                                                                        <input type="text" class="form-control"
+                                                                               name="slogan"
+                                                                               placeholder="标语">
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label>公司简介:</label>
+                                                                        <input class="form-control"
+                                                                               name="intro"
+                                                                               placeholder="公司简介"
+                                                                               type="text">
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label>陌生人开关:</label>
+                                                                        <select class="form-control m-b"
+                                                                                name="recStrangerType">
+                                                                            <option value="1">不识别陌生人</option>
+                                                                            <option value="2">识别陌生人</option>
+                                                                        </select>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label>陌生人识别时间:</label>
+                                                                        <select class="form-control m-b"
+                                                                                name="recStrangerTimesThreshold">
+                                                                            <option value="3">默认</option>
+                                                                            <option value="2">一般</option>
+                                                                            <option value="1">快速</option>
+                                                                        </select>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label>陌生人语音模式:</label>
+                                                                        <select class="form-control m-b"
+                                                                                name="陌生人语音模式类型">
+                                                                            <option value="1">不需要语音播报</option>
+                                                                            <option value="2">陌生人警报</option>
+                                                                            <option value="100">自定义</option>
+                                                                        </select>
+                                                                    </div>
 
-                                                                        <div class="form-group">
-                                                                            <label for="exampleInputEmail2">陌生人判断次数:</label>
-                                                                            <input class="form-control"
-                                                                                   id="exampleInputEmail2"
-                                                                                   placeholder="jane.doe@example.com"
-                                                                                   type="email">
-                                                                        </div>
-                                                                        <div class="form-group">
-                                                                            <label for="exampleInputEmail2">陌生人语音模式:</label>
-                                                                            <select class="form-control m-b"
-                                                                                    name="account">
-                                                                                <option>选项 1</option>
-                                                                                <option>选项 2</option>
-                                                                                <option>选项 3</option>
-                                                                                <option>选项 4</option>
-                                                                            </select>
-                                                                        </div>
-
-                                                                        <div class="form-group">
-                                                                            <label for="exampleInputEmail2">陌生人语音自定义:</label>
-                                                                            <input class="form-control"
-                                                                                   id="exampleInputEmail2"
-                                                                                   placeholder="jane.doe@example.com"
-                                                                                   type="email">
-                                                                        </div>
-                                                                        <div class="form-group">
-                                                                            <label for="exampleInputEmail2">照片防伪等级:</label>
-                                                                            <select class="form-control m-b"
-                                                                                    name="account">
-                                                                                <option>选项 1</option>
-                                                                                <option>选项 2</option>
-                                                                                <option>选项 3</option>
-                                                                                <option>选项 4</option>
-                                                                            </select>
-                                                                        </div>
+                                                                    <div class="form-group">
+                                                                        <label>陌生人语音自定义:</label>
+                                                                        <input class="form-control"
+                                                                               name="ttsModStrangerContent"
+                                                                               placeholder="陌生人语音自定义"
+                                                                               type="text">
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label>多个人脸检测设置:</label>
+                                                                        <select class="form-control m-b"
+                                                                                name="multiplayerDetection">
+                                                                            <option value="1">检测多个人脸并进行识别</option>
+                                                                            <option value="2">只检测多个人脸中最大的人脸</option>
+                                                                        </select>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label>识别等级:</label>
+                                                                        <select class="form-control m-b"
+                                                                                name="recRank">
+                                                                            <option value="1">识别速度最快，精确率最低</option>
+                                                                            <option value="2">识别速度较快，精确率较高</option>
+                                                                            <option value="3">识别速度较慢，精确度最高</option>
+                                                                        </select>
                                                                     </div>
 
                                                                 </fieldset>
                                                                 <div class="form-group">
-                                                                    <button class="btn btn-primary" type="submit">确认修改
+                                                                    <button class="btn btn-primary" type="button"
+                                                                            id="setConfig">确认修改
                                                                     </button>
                                                                 </div>
                                                             </form>
@@ -394,16 +372,16 @@
                                                                                placeholder="Jane Doe">
                                                                     </div>
                                                                     <div class="form-group">
-                                                                        <label for="exampleInputEmail2">设备心跳地址:</label>
+                                                                        <label>设备心跳地址:</label>
                                                                         <input class="form-control"
                                                                                id="exampleInputEmail2"
                                                                                placeholder="jane.doe@example.com"
                                                                                type="email">
                                                                     </div>
                                                                     <div class="form-group">
-                                                                        <label for="exampleInputEmail2">拍照注册地址:</label>
+                                                                        <label>拍照注册地址:</label>
                                                                         <input class="form-control"
-                                                                               id="exampleInputEmail2"
+                                                                               id="121"
                                                                                placeholder="jane.doe@example.com"
                                                                                type="email">
                                                                     </div>
@@ -619,6 +597,8 @@
 <script th:src="@{/js/plugins/bootstrap-table/bootstrap-table-mobile.min.js}"></script>
 <script th:src="@{/js/plugins/bootstrap-table/locale/bootstrap-table-zh-CN.min.js}"></script>
 
+<!-- GITTER -->
+<script th:src="@{/js/plugins/gritter/jquery.gritter.min.js}"></script>
 
 <!-- layer javascript -->
 <script th:src="@{/js/plugins/layer/layer.min.js}"></script>
@@ -635,7 +615,68 @@ $(document).ready(function(){
           content: '/project/addSubpackage'
         });
     });
+
+    $("#updateP").click(function(){
+            var tmpInput=$("<input type='text' name='id' style='display:none;'/>");
+          tmpInput.attr("value", $("#zid").val());
+          $('#fPas').append(tmpInput);
+        $.post("/device/updatePas", $('#fPas').serializeArray(),
+            function(data){
+                $('input[name*="id"]').remove();
+                $.gritter.add({
+                    title: '提示',
+                    text: '<p class="text-center"><h1>'+data+'</h1></p>',
+                    time: 10000
+            });
+        });
+    });
+
+    $("#setNetInfo").click(function(){
+        var tmpInput=$("<input type='text' name='id' style='display:none;'/>");
+          tmpInput.attr("value", $("#zid").val());
+          $('#formNetInfo').append(tmpInput);
+        $.post("/device/setNetInfo", $('#formNetInfo').serializeArray(),
+            function(data){
+                $('input[name*="id"]').remove();
+                $.gritter.add({
+                    title: '提示',
+                    text: '<p class="text-center"><h1>'+data+'</h1></p>',
+                    time: 10000
+            });
+        });
+    });
+
+    $("#setWifi").click(function(){
+        var tmpInput=$("<input type='text' name='id' style='display:none;'/>");
+          tmpInput.attr("value", $("#zid").val());
+          $('#fsetWifi').append(tmpInput);
+        $.post("/device/setWifi", $('#fsetWifi').serializeArray(),
+            function(data){
+                $('input[name*="id"]').remove();
+                $.gritter.add({
+                    title: '提示',
+                    text: '<p class="text-center"><h1>'+data+'</h1></p>',
+                    time: 10000
+            });
+        });
+    });
+    $("#setConfig").click(function(){
+        var tmpInput=$("<input type='text' name='id' style='display:none;'/>");
+          tmpInput.attr("value", $("#zid").val());
+          $('#fsetConfig').append(tmpInput);
+        $.post("/device/setConfig", $('#fsetConfig').serializeArray(),
+            function(data){
+                $('input[name*="id"]').remove();
+                $.gritter.add({
+                    title: '提示',
+                    text: '<p class="text-center"><h1>'+data+'</h1></p>',
+                    time: 10000
+            });
+        });
+    });
 });
+
+
 </script>
 <script>
 
@@ -673,11 +714,13 @@ $(document).ready(function(){
         $("#pas").val(name.pas);
         $("#pas2").val(name.pas);
         $("#ip").val(name.ip);
-        $("#wangg").val(name.ip);
-        alert();
+        $("#zid").val(name.id);
+        $("#gateway").val(name.ip.substring(0, name.ip.lastIndexOf('.')+1)+ "1");
       });
   })();
 })(document, window, jQuery);
+
+
 
 
 

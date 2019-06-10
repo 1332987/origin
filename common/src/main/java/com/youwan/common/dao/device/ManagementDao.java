@@ -7,4 +7,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface ManagementDao extends JpaRepository<Management, Long> {
+    public Management findByIp(String ip);
 }

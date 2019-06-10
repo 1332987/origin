@@ -30,10 +30,18 @@ public class DeviceController {
 
     @RequestMapping("/management")
     public String management(Model model) throws InterruptedException {
-        log.info("lailelaodi");
+        log.info("management");
         List<String> lists = IPUtil.getIPs();
         List<Management> list = IPUtil.getMachine(lists);
+        for (Management m : list) {
+            ManagementDev md = managementDevDao.findByIp(m.getIp());
+            if (md == null) {
+                md.setIp(m.getIp());
+                managementDevDao.save(md);
+            }
+        }
         Thread.sleep(2000);
+
         return "device/management";
     }
 
@@ -51,7 +59,7 @@ public class DeviceController {
         log.info(management.toString());
         Map<String, Object> data = new HashMap<>();
         data.put("oldPass", management.getPas());
-        management = managementDao.getOne(management.getId());
+        management = managementDao.findByIp(management.getIp());
         data.put("newPass", pas2);
         String date = HttpUtil.post("http://" + management.getIp() + ":8090/setPassWord", data, 2000);
         log.info("----" + date);
@@ -70,7 +78,7 @@ public class DeviceController {
         log.info(management.toString());
         log.info(managementDev.toString());
         String ip = management.getIp();
-        management = managementDao.getOne(management.getId());
+        management = managementDao.findByIp(management.getIp());
         Map<String, Object> data = new HashMap<>();
         data.put("pass", management.getPas());
         data.put("isDHCPMod", managementDev.getIsDHCPMod());
@@ -114,8 +122,8 @@ public class DeviceController {
 
     @ResponseBody
     @RequestMapping("/setConfig")
-    public String setConfig(Long id, ManagementDev m) {
-        Management management = managementDao.getOne(id);
+    public String setConfig(String ip, ManagementDev m) {
+        Management management = managementDao.findByIp(ip);
         log.info(m.toString());
         log.info(management.toString());
         Map<String, Object> data = new HashMap<>();
@@ -128,10 +136,11 @@ public class DeviceController {
                 + "\",\"slogan\":\"" + m.getSlogan() + "\",\"intro\":\"" + m.getIntro()
                 + "\",\"recStrangerTimesThreshold\":" + m.getRecStrangerTimesThreshold() + ",\"recStrangerType\":" + m.getRecStrangerType()
                 + ",\"ttsModStrangerType\":" + m.getTtsModStrangerType() + ",\"ttsModStrangerContent\":\"" + m.getTtsModStrangerContent()
-                + "\",\"multiplayerDetection\"" + m.getMultiplayerDetection() + ",\"wg\":\"" + m.getWg() + "\",\"recRank\":" + m.getRecRank() + "}");
+                + "\",\"multiplayerDetection\":" + m.getMultiplayerDetection() + ",\"wg\":\"" + m.getWg() + "\",\"recRank\":" + m.getRecRank() + "}");
         String date = HttpUtil.post("http://" + management.getIp() + ":8090/setConfig", data, 2000);
         log.info("----" + date);
         log.info("----" + JSON.parseObject(date).getString("success"));
+        log.info(JSON.toJSONString(data));
         if (StringUtils.equals(JSON.parseObject(date).getString("success"), "true")) {
             ManagementDev anagem = managementDevDao.findByIp(management.getIp());
             if (anagem != null) {
@@ -157,8 +166,151 @@ public class DeviceController {
                 managementDevDao.save(anagem);
             } else
                 managementDevDao.save(m);
-            return JSON.parseObject(date).getString("msg");
+            return JSON.parseObject(date).getString("data");
         }
-        return "修改wifi配置失败";
+        return "修改配置失败";
+    }
+
+
+    @ResponseBody
+    @RequestMapping("/setIdentifyCallBack")
+    public String setIdentifyCallBack(String ip, ManagementDev managementDev) {
+        log.info(managementDev.toString());
+        managementDev.setIp(managementDevDao.findByIp(ip).getIp());
+        Management m = managementDao.findByIp(ip);
+        Map<String, Object> data = new HashMap<>();
+        data.put("pass", m.getPas());
+        data.put("callbackUrl", managementDev.getCallbackUrl());
+        String date = HttpUtil.post("http://" + managementDev.getIp() + ":8090/setIdentifyCallBack", data, 2000);
+        log.info("----" + date);
+        log.info("----" + JSON.parseObject(date).getString("success"));
+        if (StringUtils.equals(JSON.parseObject(date).getString("success"), "true"))
+            return JSON.parseObject(date).getString("data");
+
+        data.remove("callbackUrl");
+        data.put("url", managementDev.getUrl());
+        date = HttpUtil.post("http://" + managementDev.getIp() + ":8090/setDeviceHeartBeat", data, 2000);
+        log.info("----" + date);
+        log.info("----" + JSON.parseObject(date).getString("success"));
+        if (StringUtils.equals(JSON.parseObject(date).getString("success"), "true"))
+            return JSON.parseObject(date).getString("data");
+
+        data.put("url", managementDev.getUrlImg());
+        date = HttpUtil.post("http://" + managementDev.getIp() + ":8090/setImgRegCallBack", data, 2000);
+        log.info("----" + date);
+        log.info("----" + JSON.parseObject(date).getString("success"));
+        if (StringUtils.equals(JSON.parseObject(date).getString("success"), "true"))
+            return JSON.parseObject(date).getString("data");
+        return "设置失败";
+    }
+
+    @ResponseBody
+    @RequestMapping("/setScreenOrt")
+    public String setScreenOrt(String ip, Integer orientation) {
+        log.info(ip);
+        Management m = managementDao.findByIp(ip);
+        Map<String, Object> data = new HashMap<>();
+        data.put("pass", m.getPas());
+        data.put("orientation", orientation);
+        String date = HttpUtil.post("http://" + m.getIp() + ":8090/setScreenOrt", data, 2000);
+        log.info("----" + date);
+        log.info("----" + JSON.parseObject(date).getString("success"));
+        if (StringUtils.equals(JSON.parseObject(date).getString("success"), "true"))
+            return JSON.parseObject(date).getString("msg");
+        return "修改配置失败";
+    }
+
+    @ResponseBody
+    @RequestMapping("/changeLogo")
+    public String changeLogo(String ip, String imgBase64) {
+        log.info(ip);
+        log.info(imgBase64);
+        imgBase64 = StringUtils.remove(imgBase64, "data:image/jpg;base64,");
+        imgBase64 = StringUtils.remove(imgBase64, "data:image/png;base64,");
+        imgBase64 = StringUtils.remove(imgBase64, "data:image/jpeg;base64,");
+        Management m = managementDao.findByIp(ip);
+        Map<String, Object> data = new HashMap<>();
+        data.put("pass", m.getPas());
+        data.put("imgBase64", imgBase64);
+        String date = HttpUtil.post("http://" + m.getIp() + ":8090/changeLogo", data, 2000);
+        log.info("----" + date);
+        log.info("----" + JSON.parseObject(date).getString("success"));
+        if (StringUtils.equals(JSON.parseObject(date).getString("success"), "true"))
+            return JSON.parseObject(date).getString("msg");
+        return "修改配置失败";
+    }
+
+    @ResponseBody
+    @RequestMapping("/getDeviceKey")
+    public String getDeviceKey(String ip) {
+        log.info(ip);
+        Management m = managementDao.findByIp(ip);
+        String date = HttpUtil.post("http://" + m.getIp() + ":8090/getDeviceKey", "", 2000);
+        log.info("----" + date);
+        log.info("----" + JSON.parseObject(date).getString("success"));
+        if (StringUtils.equals(JSON.parseObject(date).getString("success"), "true"))
+            return JSON.parseObject(date).getString("data");
+        return "获取设备序列号失败";
+    }
+
+    @ResponseBody
+    @RequestMapping("/setTime")
+    public String setTime(String ip, String timestamp) {
+        log.info(ip);
+        Management m = managementDao.findByIp(ip);
+        Map<String, Object> data = new HashMap<>();
+        data.put("pass", m.getPas());
+        data.put("timestamp", timestamp);
+        String date = HttpUtil.post("http://" + m.getIp() + ":8090/setTime", data, 2000);
+        log.info("----" + date);
+        log.info("----" + JSON.parseObject(date).getString("success"));
+        if (StringUtils.equals(JSON.parseObject(date).getString("success"), "true"))
+            return JSON.parseObject(date).getString("msg");
+        return "获取设备序列号失败";
+    }
+
+    @ResponseBody
+    @RequestMapping("/restartDevice")
+    public String restartDevice(String ip) {
+        log.info(ip);
+        Management m = managementDao.findByIp(ip);
+        Map<String, Object> data = new HashMap<>();
+        data.put("pass", m.getPas());
+        String date = HttpUtil.post("http://" + m.getIp() + ":8090/restartDevice", data, 2000);
+        log.info("----" + date);
+        if (StringUtils.equals(JSON.parseObject(date).getString("success"), "true"))
+            return "成功";
+        return "重启设备序失败";
+    }
+
+    @ResponseBody
+    @RequestMapping("/deviceReset")
+    public String deviceReset(String ip, Boolean delete) {
+        log.info(ip);
+        Management m = managementDao.findByIp(ip);
+        Map<String, Object> data = new HashMap<>();
+        data.put("pass", m.getPas());
+        data.put("delete", delete);
+        String date = HttpUtil.post("http://" + m.getIp() + ":8090/device/reset", data, 2000);
+        log.info("----" + date);
+        log.info("----" + JSON.parseObject(date).getString("success"));
+        if (StringUtils.equals(JSON.parseObject(date).getString("success"), "true"))
+            return JSON.parseObject(date).getString("msg");
+        return "获取设备序列号失败";
+    }
+
+    @ResponseBody
+    @RequestMapping("/deviceOpenDoorControl")
+    public String deviceOpenDoorControl(String ip, Boolean delete) {
+        log.info(ip);
+        Management m = managementDao.findByIp(ip);
+        Map<String, Object> data = new HashMap<>();
+        data.put("pass", m.getPas());
+        String date = HttpUtil.post("http://" + m.getIp() + ":8090/device/openDoorControl", data, 2000);
+        log.info("----" + date);
+        log.info("----" + JSON.parseObject(date).getString("success"));
+        if (StringUtils.equals(JSON.parseObject(date).getString("success"), "true"))
+            return JSON.parseObject(date).getString("msg");
+        return "获取设备序列号失败";
     }
 }

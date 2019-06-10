@@ -47,4 +47,10 @@ public class ManagementDev implements Serializable {
     private Integer recRank;//识别等级，1：识别速度最快，精确率最低；2：识别速度较快，精确率较高；3：识别速度较慢，精确度最高。此参数仅对二代设备有效，二代设备默认等级2；一代设备此参数无效，默认等级1
 
 
+    private String callbackUrl;//设备回调地址
+    private String url;//设备心跳
+    private String urlImg;//自动拍照
+
+    private Integer screenMode;//大屏显示模式接口
+
 }

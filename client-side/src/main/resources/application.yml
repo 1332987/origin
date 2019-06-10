@@ -48,3 +48,8 @@ spring:
       ddl-auto: update
     platform: h2-console
     open-in-view: true
+
+#设备回调地址
+callbackUrl: http://localhost/device/getIdentifyCallBack
+url:
+urlImg:

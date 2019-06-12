@@ -3,10 +3,9 @@
 <head th:replace="/common/template :: header(~{::title},~{::link},~{::style})">
     <link rel="stylesheet" th:href="@{/css/plugins/bootstrap-table/bootstrap-table.min.css}">
 </head>
-<body>
 <body class="gray-bg">
 <div class="row">
-    <div class="col-sm-6">
+    <div class="col-sm-12">
         <div class="tabs-container">
             <ul class="nav nav-tabs">
                 <li class="active"><a data-toggle="tab" href="#tab-1" aria-expanded="true">员工管理</a>
@@ -19,7 +18,54 @@
             <div class="tab-content">
                 <div id="tab-1" class="tab-pane active">
                     <div class="panel-body">
-
+                        <div class="col-sm-12">
+                            <!-- Example Events -->
+                            <div class="example-wrap">
+                                <div class="example">
+                                    <div class="btn-group hidden-xs" id="exampleTableEventsToolbar" role="group">
+                                        <button class="btn btn-outline btn-default" id="parentIframe" type="button">
+                                            <i aria-hidden="true" class="glyphicon glyphicon-plus"></i>添加
+                                        </button>
+                                        <button class="btn btn-outline btn-default" type="button">
+                                            <i aria-hidden="true" class="glyphicon glyphicon-edit"></i>编辑
+                                        </button>
+                                        <button class="btn btn-outline btn-default" type="button">
+                                            <i aria-hidden="true" class="glyphicon glyphicon-trash"></i>删除
+                                        </button>
+                                        <button class="btn btn-outline btn-default" type="button">
+                                            <i aria-hidden="true" class="glyphicon glyphicon-trash"></i>调动
+                                        </button>
+                                        <button class="btn btn-outline btn-default" type="button">
+                                            <i aria-hidden="true" class="glyphicon glyphicon-trash"></i>发卡
+                                        </button>
+                                        <button class="btn btn-outline btn-default" type="button">
+                                            <i aria-hidden="true" class="glyphicon glyphicon-trash"></i>人脸管理
+                                        </button>
+                                        <button class="btn btn-outline btn-default" type="button">
+                                            <i aria-hidden="true" class="glyphicon glyphicon-download-alt"></i>导出
+                                        </button>
+                                    </div>
+                                    <table data-height="400" data-mobile-responsive="true" id="exampleTableEvents">
+                                        <thead>
+                                        <tr>
+                                            <th data-checkbox="true" data-field="state"></th>
+                                            <th data-field="id">id</th>
+                                            <th data-field="projectCode">项目编码</th>
+                                            <th data-field="corpCode">统一社会信用代码</th>
+                                            <th data-field="corpName">参建类型</th>
+                                            <th data-field="corpType">进场时间</th>
+                                            <th data-field="entryTime">退场时间</th>
+                                            <th data-field="pmName">项目经理名称</th>
+                                            <th data-field="pmIDCardType">项目经理证件类型</th>
+                                            <th data-field="pmIDCardNumber">项目经理证件号码</th>
+                                            <th data-field="pmPhone">项目经理电话</th>
+                                        </tr>
+                                        </thead>
+                                    </table>
+                                </div>
+                            </div>
+                            <!-- End Example Events -->
+                        </div>
                     </div>
                 </div>
                 <div id="tab-2" class="tab-pane">
@@ -43,6 +89,7 @@
 
         </div>
     </div>
+</div>
     <!-- 全局js -->
     <script th:src="@{/js/jquery.min.js?v=2.1.4}"></script>
     <script th:src="@{/js/bootstrap.min.js?v=3.3.6}"></script>
@@ -55,28 +102,60 @@
     <script th:src="@{/js/plugins/bootstrap-table/bootstrap-table-mobile.min.js}"></script>
     <script th:src="@{/js/plugins/bootstrap-table/locale/bootstrap-table-zh-CN.min.js}"></script>
 
-    <!-- Peity -->
-    <script th:src="@{/js/demo/bootstrap-table-demo.js}"></script>
-
     <!-- layer javascript -->
     <script th:src="@{/js/plugins/layer/layer.min.js}"></script>
     <script>
-$(document).ready(function(){
-    $("#parentIframe").click(function(){
-        //iframe层-父子操作
-        layer.open({
-          type: 2,
-          title: '添加',
-          area: ['600px', '550px'],
-          fixed: false, //不固定
-          maxmin: true,
-          content: '/project/addSubpackage'
+        $(document).ready(function(){
+            $("#parentIframe").click(function(){
+                //iframe层-父子操作
+                layer.open({
+                  type: 2,
+                  title: '添加',
+                  area: ['600px', '550px'],
+                  fixed: false, //不固定
+                  maxmin: true,
+                  content: '/project/addSubpackage'
+                });
+            });
         });
-    });
-});
 
+    </script>
+<script>
+        (function(document, window, $) {
+          'use strict';
+          (function() {
+            var bt_data = [];
+          })();
+          (function() {
+            $('#exampleTableEvents').bootstrapTable({
+              url: "/project/tableT",
+              search : false, //显示搜索框
+              clickToSelect : true, //是否启用点击选中行
+              pagination: true,
+              showRefresh: true,
+              showToggle: true,
+              showColumns: true,
+              showExport : true,
+              exportDataType : "basic", //basic', 'all', 'selected'.
+              iconSize: 'outline',
+              cardView : false,
+              smartDisplay : true,
+              uniqueId : "id", //每一行的唯一标识，一般为主键列
+              toolbar: '#exampleTableEventsToolbar',
+              icons: {
+                refresh: 'glyphicon-repeat',
+                toggle: 'glyphicon-list-alt',
+                columns: 'glyphicon-list'
+              }
+            });
 
+            var $result = $('#examplebtTableEventsResult');
 
+            $('#exampleTableEvents').on('check.bs.table', function(e, name, args) {
+<!--                alert(name.id);-->
+              });
+          })();
+        })(document, window, jQuery);
     </script>
 </body>
 

@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="/common/template :: header(~{::title},~{::link},~{::style})">
+    <!-- Morris -->
+    <link th:href="@{/css/plugins/morris/morris-0.4.3.min.css}" rel="stylesheet">
+</head>
+<body class="gray-bg">
+
+<div class="row">
+    <div class="col-sm-6">
+        <div class="ibox float-e-margins">
+            <div class="ibox-content">
+                <form class="form-inline" id="fome1" th:action="@{/people/addTeam}">
+                    <div class="form-group">
+                        <label>班组名称:</label>
+                        <input type="text" class="form-control" id="teamName" name="teamName" placeholder="班组名称">
+                    </div>
+                    <div class="form-group">
+                        <label>班组所在企业负责人</label>
+                        <input class="form-control" id="responsiblePersonName" name="responsiblePersonName"
+                               placeholder="统一社会信用代码"
+                               type="text">
+                    </div>
+                    <div class="form-group">
+                        <label class="exampleInputName2">企业名称：</label>
+                        <div class="col-sm-10">
+                            <input type="text" id="corpName" name="corpName" placeholder="企业名称"
+                                   class="laydate-icon form-control layer-date">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>责任人联系电话:</label>
+                        <input class="form-control" id="responsiblePersonPhone" name="responsiblePersonPhone"
+                               placeholder="责任人联系电话"
+                               type="text">
+                    </div>
+                    <div class="form-group">
+                        <label>责任人证件类型</label>
+                        <select class="form-control" id="responsiblePersonIDCardType"
+                                name="responsiblePersonIDCardType">
+                            <option value="01">居民身份证</option>
+                            <option value="02">军官证</option>
+                            <option value="03">武警警官证</option>
+                            <option value="04">士兵证</option>
+                            <option value="05">军队离退休干部证</option>
+                            <option value="06">残疾人证</option>
+                            <option value="07">残疾军人证（1-8 级）</option>
+                            <option value="08">护照</option>
+                            <option value="09">港澳同胞回乡证</option>
+                            <option value="10">港澳居民来往内地通行证</option>
+                            <option value="11">中华人民共和国往来港澳通行证</option>
+                            <option value="12">台湾居民来往大陆通行证</option>
+                            <option value="13">大陆居民往来台湾通行证</option>
+                            <option value="14">外交官证</option>
+                            <option value="15">领事馆证</option>
+                            <option value="16">海员证</option>
+                            <option value="17">香港身份证</option>
+                            <option value="18">台湾身份证</option>
+                            <option value="19">澳门身份证</option>
+                            <option value="20">外国人身份证件</option>
+                            <option value="21">高校毕业生自主创业证</option>
+                            <option value="22">就业失业登记证</option>
+                            <option value="23">台胞证</option>
+                            <option value="24">退休证</option>
+                            <option value="25">离休证</option>
+                            <option value="99">其它证件</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>责任人证件号码:</label>
+                        <input class="form-control" id="responsiblePersonIDNumber" name="responsiblePersonIDNumber"
+                               placeholder="责任人证件号码"
+                               type="text">
+                    </div>
+                    <div class="form-group">
+                        <label>进场日期:</label>
+                        <input class="form-control" id="entryTime" name="entryTime" placeholder="进场日期"
+                               type="text">
+                    </div>
+
+                    <div class="form-group">
+                        <label>退场日期:</label>
+                        <input class="form-control" id="exitTime" name="exitTime" placeholder="项目经理证件号码"
+                               type="text">
+                    </div>
+                    <div class="form-group">
+                        <label>进场附件:</label>
+                        <input type="text" class="form-control" id="entryAttachments" name="entryAttachments"
+                               placeholder="进场附件">
+                    </div>
+                    <div class="form-group">
+                        <label>退场附件:</label>
+                        <input type="text" class="form-control" id="exitAttachments" name="exitAttachments"
+                               placeholder="退场附件">
+                    </div>
+                    <div class="form-group">
+                        <button class="btn btn-primary" type="button" onclick="login()">保存内容</button>
+                        <button class="btn btn-white" type="submit">取消</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<script th:replace="/common/template :: script"></script>
+<!-- layerDate plugin javascript -->
+<script th:src="@{/js/plugins/layer/laydate/laydate.js}"></script>
+<script type="text/javascript">
+        function login() {
+            $.ajax({
+            //几个参数需要注意一下
+                type: "POST",//方法类型
+                dataType: "json",//预期服务器返回的数据类型
+                url: "/people/addTeam" ,//url
+                data: $('#fome1').serialize(),
+                success: function (result) {
+                    console.log(result);//打印服务端返回的数据(调试用)
+                    alert(result);
+                },
+                error : function() {
+                    alert("异常！");
+                }
+            });
+        }
+
+</script>
+</body>
+
+</html>

@@ -41,7 +41,6 @@ public class LoginController {
             Runnable runnable = () -> {
                 try {
                     run.exec(command);
-//                    log.info("command："+command);
                 } catch (IOException e) {
                     log.info(e.getMessage());
                 }

@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="/common/template :: header(~{::title},~{::link},~{::style})">
+    <!-- Morris -->
+    <link th:href="@{/css/plugins/morris/morris-0.4.3.min.css}" rel="stylesheet">
+</head>
+<body class="gray-bg">
+
+<div class="row">
+    <div class="col-sm-6">
+        <div class="ibox float-e-margins">
+            <div class="ibox-content">
+                <form class="form-inline" id="fome1" th:action="@{/people/addPInfo}">
+                    <div class="form-group">
+                        <label>姓名:</label>
+                        <input type="text" class="form-control" id="name" name="name" placeholder="姓名">
+                    </div>
+                    <div class="form-group">
+                        <label>IC卡号</label>
+                        <input class="form-control" id="idcardNum" name="idcardNum"
+                               placeholder="IC卡号"
+                               type="text">
+                    </div>
+                    <div class="form-group">
+                        <label class="exampleInputName2">班组编号：</label>
+                        <div class="col-sm-10">
+                            <input type="text" id="teamSysNo" name="teamSysNo" placeholder="班组编号"
+                                   class="laydate-icon form-control layer-date">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>工人姓名:</label>
+                        <input class="form-control" id="workerName" name="workerName"
+                               placeholder="工人姓名"
+                               type="text">
+                    </div>
+                    <div class="form-group">
+                        <label>是否为组长</label>
+                        <select class="form-control" id="isTeamLeader"
+                                name="isTeamLeader">
+                            <option value="1">是</option>
+                            <option value="0">不是</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>证件类型</label>
+                        <select class="form-control" id="idCardType"
+                                name="idCardType">
+                            <option value="01">居民身份证</option>
+                            <option value="02">军官证</option>
+                            <option value="03">武警警官证</option>
+                            <option value="04">士兵证</option>
+                            <option value="05">军队离退休干部证</option>
+                            <option value="06">残疾人证</option>
+                            <option value="07">残疾军人证（1-8 级）</option>
+                            <option value="08">护照</option>
+                            <option value="09">港澳同胞回乡证</option>
+                            <option value="10">港澳居民来往内地通行证</option>
+                            <option value="11">中华人民共和国往来港澳通行证</option>
+                            <option value="12">台湾居民来往大陆通行证</option>
+                            <option value="13">大陆居民往来台湾通行证</option>
+                            <option value="14">外交官证</option>
+                            <option value="15">领事馆证</option>
+                            <option value="16">海员证</option>
+                            <option value="17">香港身份证</option>
+                            <option value="18">台湾身份证</option>
+                            <option value="19">澳门身份证</option>
+                            <option value="20">外国人身份证件</option>
+                            <option value="21">高校毕业生自主创业证</option>
+                            <option value="22">就业失业登记证</option>
+                            <option value="23">台胞证</option>
+                            <option value="24">退休证</option>
+                            <option value="25">离休证</option>
+                            <option value="99">其它证件</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>证件号码:</label>
+                        <input class="form-control" id="idCardNumber" name="idCardNumber" placeholder="证件号码"
+                               type="text">
+                    </div>
+
+                    <div class="form-group">
+                        <label>当前工种:</label>
+                        <input class="form-control" id="workType" name="workType" placeholder="当前工种"
+                               type="text">
+                    </div>
+                    <div class="form-group">
+                        <label>工人类型:</label>
+                        <select class="form-control" id="workRole"
+                                name="workRole">
+                            <option value="010">砌筑工</option>
+                            <option value="030">架子工</option>
+                            <option value="040">混凝土工</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>发卡时间:</label>
+                        <input type="text" class="form-control" id="issueCardDate" name="issueCardDate"
+                               placeholder="发卡时间">
+                    </div>
+                    <div class="form-group">
+                        <label>办卡采集相片:</label>
+                        <input type="text" class="form-control" id="issueCardPic" name="issueCardPic"
+                               placeholder="办卡采集相片">
+                    </div>
+                    <div class="form-group">
+                        <label>考勤卡号:</label>
+                        <input type="text" class="form-control" id="cardNumber" name="cardNumber"
+                               placeholder="考勤卡号">
+                    </div>
+                    <div class="form-group">
+                        <label>发放工资银行卡号:</label>
+                        <input type="text" class="form-control" id="payRollBankCardNumber" name="payRollBankCardNumber"
+                               placeholder="发放工资银行卡号">
+                    </div>
+                    <div class="form-group">
+                        <label>发放工资银行名称:</label>
+                        <input type="text" class="form-control" id="payRollBankName" name="payRollBankName"
+                               placeholder="发放工资银行名称">
+                    </div>
+                    <div class="form-group">
+                        <label>发放工资卡银行联号:</label>
+                        <input type="text" class="form-control" id="bankLinkNumber" name="bankLinkNumber"
+                               placeholder="发放工资卡银行联号">
+                    </div>
+                    <div class="form-group">
+                        <label>发放工资卡银行:</label>
+                        <input type="text" class="form-control" id="payRollTopBankCode" name="payRollTopBankCode"
+                               placeholder="发放工资卡银行">
+                    </div>
+                    <div class="form-group">
+                        <label>是否购买工伤或意外伤害保险:</label>
+                        <select class="form-control" id="hasBuyInsurance"
+                                name="hasBuyInsurance">
+                            <option value="1">是</option>
+                            <option value="0">不是</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>民族:</label>
+                        <input type="text" class="form-control" id="nation" name="nation"
+                               placeholder="民族">
+                    </div>
+                    <div class="form-group">
+                        <label>住址:</label>
+                        <input type="text" class="form-control" id="address" name="address"
+                               placeholder="住址">
+                    </div>
+                    <div class="form-group">
+                        <label>头像:</label>
+                        <input type="text" class="form-control" id="headImage" name="headImage"
+                               placeholder="头像">
+                    </div>
+                    <div class="form-group">
+                        <label>政治面貌:</label>
+                        <select class="form-control" id="politicsType"
+                                name="politicsType">
+                            <option value="01">中共党员</option>
+                            <option value="02">中共预备党员</option>
+                            <option value="03">共青团员</option>
+                            <option value="04">民革党员</option>
+                            <option value="05">民盟盟员</option>
+                            <option value="06">民建会员</option>
+                            <option value="07">民进会员</option>
+                            <option value="08">农工党党员</option>
+                            <option value="09">致公党党员</option>
+                            <option value="10">九三学社社员</option>
+                            <option value="11">台盟盟员</option>
+                            <option value="12">无党派人士</option>
+                            <option value="13">群众</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>加入工会时间:</label>
+                        <input type="text" class="form-control" id="joinedTime" name="joinedTime"
+                               placeholder="加入工会时间">
+                    </div>
+                    <div class="form-group">
+                        <label>手机号码:</label>
+                        <input type="text" class="form-control" id="cellPhone" name="cellPhone"
+                               placeholder="手机号码">
+                    </div>
+                    <div class="form-group">
+                        <label>文化程度:</label>
+                        <select class="form-control" id="cultureLevelType"
+                                name="cultureLevelType">
+                            <option value="01">小学</option>
+                            <option value="02">初中</option>
+                            <option value="03">高中</option>
+                            <option value="04">中专</option>
+                            <option value="05">大专</option>
+                            <option value="06">本科</option>
+                            <option value="07">硕士</option>
+                            <option value="08">博士</option>
+                            <option value="99">其他</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>特长:</label>
+                        <input type="text" class="form-control" id="Specialty" name="Specialty"
+                               placeholder="特长">
+                    </div>
+                    <div class="form-group">
+                        <label>是否有重大病史:</label>
+                        <select class="form-control" id="hasBadMedicalHistory"
+                                name="hasBadMedicalHistory">
+                            <option value="1">是</option>
+                            <option value="0">不是</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>紧急联系人姓名:</label>
+                        <input type="text" class="form-control" id="urgentLinkMan" name="urgentLinkMan"
+                               placeholder="紧急联系人姓名">
+                    </div>
+                    <div class="form-group">
+                        <label>紧急联系方式:</label>
+                        <input type="text" class="form-control" id="urgentLinkManPhone" name="urgentLinkManPhone"
+                               placeholder="紧急联系方式">
+                    </div>
+                    <div class="form-group">
+                        <label>开始工作日期:</label>
+                        <input type="text" class="form-control" id="workDate" name="workDate"
+                               placeholder="开始工作日期">
+                    </div>
+                    <div class="form-group">
+                        <label>婚姻状况:</label>
+                        <select class="form-control" id="maritalStatus"
+                                name="maritalStatus">
+                            <option value="01">未婚</option>
+                            <option value="02">已婚</option>
+                            <option value="03">离异</option>
+                            <option value="04">丧偶</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>发证机关:</label>
+                        <input type="text" class="form-control" id="grantOrg" name="grantOrg"
+                               placeholder="发证机关">
+                    </div>
+                    <div class="form-group">
+                        <label>正面照:</label>
+                        <input type="text" class="form-control" id="positiveIDCardImage" name="positiveIDCardImage"
+                               placeholder="正面照">
+                    </div>
+                    <div class="form-group">
+                        <label>反面照:</label>
+                        <input type="text" class="form-control" id="negativeIDCardImage" name="negativeIDCardImage"
+                               placeholder="反面照">
+                    </div>
+                    <div class="form-group">
+                        <label>证件有效期开始日期:</label>
+                        <input type="text" class="form-control" id="startDate" name="startDate"
+                               placeholder="证件有效期开始日期">
+                    </div>
+                    <div class="form-group">
+                        <label>证件有效期结束日期:</label>
+                        <input type="text" class="form-control" id="expiryDate" name="expiryDate"
+                               placeholder="证件有效期结束日期">
+                    </div>
+                    <div class="form-group">
+                        <button class="btn btn-primary" type="button" onclick="login()">保存内容</button>
+                        <button class="btn btn-white" type="submit">取消</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-6">
+        <div class="col-sm-6" style="border-style: outset;height:250px">
+
+        </div>
+        <div class="form-group">
+            <label>请选择通道:</label>
+            <select class="form-control" id="td"
+                    name="通道">
+                <option value="01">刷脸</option>
+                <option value="02">刷卡</option>
+            </select>
+        </div>
+        <div class="col-sm-6">
+            <div class="form-group">
+                <label>刷脸请上传照片:</label>
+                <button class="btn btn-primary" type="button" onclick="uodateImg()">拍照</button>
+                <button class="btn btn-white" type="button">上传</button>
+                <button class="btn btn-white" type="button">删除</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script th:replace="/common/template :: script"></script>
+<!-- layerDate plugin javascript -->
+<script th:src="@{/js/plugins/layer/laydate/laydate.js}"></script>
+<script type="text/javascript">
+        function login() {
+            $.ajax({
+            //几个参数需要注意一下
+                type: "POST",//方法类型
+                dataType: "json",//预期服务器返回的数据类型
+                url: "/people/addPInfo" ,//url
+                data: $('#fome1').serialize(),
+                success: function (result) {
+                    console.log(result);//打印服务端返回的数据(调试用)
+                    alert(result);
+                },
+                error : function() {
+                    alert("异常！");
+                }
+            });
+        }
+        function uodateImg() {
+            $.ajax({
+            //几个参数需要注意一下
+                type: "POST",//方法类型
+                dataType: "json",//预期服务器返回的数据类型
+                url: "/people/takeImg" ,//url
+                data: {"id":"410822199908221428"},
+                success: function (result) {
+                    console.log(result);//打印服务端返回的数据(调试用)
+                    alert(result);
+                },
+                error : function() {
+                    alert("异常！");
+                }
+            });
+        }
+
+
+</script>
+</body>
+
+</html>

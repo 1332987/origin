@@ -3,11 +3,12 @@ package com.youwan.common.entity.people;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Data
 @Entity
 @Table(name = "we_Person_Info", uniqueConstraints = @UniqueConstraint(columnNames = "id"))
-public class PersonInfo {
+public class PersonInfo implements Serializable {
     // 主键ID
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

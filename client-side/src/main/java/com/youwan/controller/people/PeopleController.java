@@ -1,8 +1,10 @@
 package com.youwan.controller.people;
 
 import com.youwan.common.dao.device.ManagementDao;
+import com.youwan.common.dao.people.PersonGetImgDao;
 import com.youwan.common.dao.people.PersonInfoDao;
 import com.youwan.common.dao.people.ProjectTeamDao;
+import com.youwan.common.entity.people.PeopleGetImg;
 import com.youwan.common.entity.people.PersonInfo;
 import com.youwan.common.entity.people.ProjectTeam;
 import com.youwan.common.utils.http.HttpUtil;
@@ -13,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -29,6 +32,8 @@ public class PeopleController {
     public PersonInfoDao personInfoDao;
     @Resource
     public ManagementDao managementDao;
+    @Resource
+    public PersonGetImgDao peopleGetImgDao;
 
     @RequestMapping("/dictionaries")
     public String dictionaries(Model model) {
@@ -101,6 +106,27 @@ public class PeopleController {
         data.put("personId", "3211233");
         String date = HttpUtil.post("http://192.168.1.7:8090/face/takeImg", data, 2000);
         log.info("----" + date);
-        return "添加成功";
+        return "{\"msg\":\"成功\"}";
+    }
+
+    /**
+     * deviceKey String 设备唯一标识码
+     * personId String 人员 id
+     * time String 时间戳
+     * imgPath String 照片本地路径
+     * faceId String 照片 id
+     * ip String 设备 IP 地址
+     * feature String 特征码
+     * featureKey String
+     *
+     * @return
+     */
+    @RequestMapping("/postImg")
+    public void postImg(HttpServletRequest request, PeopleGetImg pgi) {
+
+        request.getServletContext().setAttribute("pgi", pgi);
+        peopleGetImgDao.save(pgi);
+        log.info("deviceKey:==-------------------------" + pgi.toString());
+
     }
 }

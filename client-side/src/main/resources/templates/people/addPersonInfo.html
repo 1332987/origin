@@ -268,7 +268,7 @@
         </div>
     </div>
     <div class="col-sm-6">
-        <div class="col-sm-6" style="border-style: outset;height:250px">
+        <div class="col-sm-6" style="border-style: outset;height:250px" id="xsIMg">
 
         </div>
         <div class="form-group">
@@ -292,7 +292,19 @@
 <script th:replace="/common/template :: script"></script>
 <!-- layerDate plugin javascript -->
 <script th:src="@{/js/plugins/layer/laydate/laydate.js}"></script>
-<script type="text/javascript">
+<script type="text/javascript" th:inline="javascript">
+ function myTimer() {
+    var sec = 10
+    var timer = setInterval(function() {
+    sec--
+    if (sec == -1) {
+
+        alert(sec);
+        sec = 10
+        $("#xsIMg").append('<span>213[[${application.pgi}]]</span>');
+     }
+    }, 1000);
+  }
         function login() {
             $.ajax({
             //几个参数需要注意一下
@@ -317,16 +329,16 @@
                 url: "/people/takeImg" ,//url
                 data: {"id":"410822199908221428"},
                 success: function (result) {
-                    console.log(result);//打印服务端返回的数据(调试用)
-                    alert(result);
+                myTimer();
+                    if(result.msg == '成功'){
+
+                    }
                 },
                 error : function() {
                     alert("异常！");
                 }
             });
         }
-
-
 </script>
 </body>
 

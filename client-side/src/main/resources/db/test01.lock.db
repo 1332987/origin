@@ -1,6 +1,6 @@
 #FileLock
-#Tue May 28 17:43:56 CST 2019
+#Thu Jun 20 15:14:25 CST 2019
 hostName=PC-20190322WNWV
-id=16afdd32300aee5b334476e1da9dd1979157a4db371
+id=16b73bc8404094f57d7adc3ecd58746ed365b8f6fb4
 method=file
-server=192.168.1.8\:49372
+server=192.168.1.4\:52928

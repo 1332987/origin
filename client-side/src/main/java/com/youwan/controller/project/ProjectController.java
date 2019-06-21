@@ -32,7 +32,7 @@ public class ProjectController {
     public String info(Model model) {
         Enterprise enterprise = enterpriseDao.getOne(1L);
         log.info("0.0" + enterprise.toString());
-        log.info("lailelaodi");
+        log.info("lailelaodi-1");
         model.addAttribute("enterprise", enterprise);
         return "project/info";
     }
@@ -64,7 +64,7 @@ public class ProjectController {
 
 //        Enterprise enterprise = enterpriseDao.getOne(1L);
 //        log.info("0.0" + enterprise.toString());
-        log.info("lailelaodi");
+        log.info("lailelaodi-2");
 //        model.addAttribute("enterprise", enterprise);
         return "project/info";
     }

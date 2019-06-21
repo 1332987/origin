@@ -12,13 +12,13 @@ public class AccessController {
 
     @RequestMapping("/aisle")
     public String aisle(Model model) {
-        log.info("lailelaodi");
+        log.info("lailelaodi-3");
         return "access/aisle";
     }
 
     @RequestMapping("/record")
     public String record(Model model) {
-        log.info("lailelaodi");
+        log.info("lailelaodi-4");
         return "access/record";
     }
 }

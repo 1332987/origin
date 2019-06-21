@@ -48,7 +48,7 @@ public class DeviceController {
     @ResponseBody
     @RequestMapping("/getManagement")
     public String getManagement(Model model) throws InterruptedException {
-        log.info("lailelaodi");
+        log.info("lailelaodi-5");
         List<Management> list = managementDao.findAll();
         return JSON.toJSONString(list);
     }

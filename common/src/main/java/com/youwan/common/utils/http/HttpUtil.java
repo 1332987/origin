@@ -166,6 +166,20 @@ public class HttpUtil {
         return HttpRequest.post(urlString).form(paramMap).timeout(timeout).execute().body();
     }
 
+
+    /**
+     * 发送post请求
+     *
+     * @param urlString 网址
+     * @param paramMap  post表单数据
+     * @param timeout   超时时长，-1表示默认超时，单位毫秒
+     * @param hname     请求头
+     * @return 返回数据
+     * @since 3.2.0
+     */
+    public static String post(String urlString, Map<String, Object> paramMap, int timeout, String hname, String hvalue) {
+        return HttpRequest.post(urlString).header(hname, hvalue).form(paramMap).timeout(timeout).execute().body();
+    }
     /**
      * 发送post请求<br>
      * 请求体body参数支持两种类型：

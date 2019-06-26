@@ -33,15 +33,26 @@ public class DeviceController {
         log.info("management");
         List<String> lists = IPUtil.getIPs();
         List<Management> list = IPUtil.getMachine(lists);
+        log.info("=--=-1=-=-=");
+        Thread.sleep(2000);
         for (Management m : list) {
+
+            if (managementDao.findByIp(m.getIp()) == null)
+                managementDao.save(m);
+            log.info(m.toString());
+            log.info("=--=-=-=-=");
             ManagementDev md = managementDevDao.findByIp(m.getIp());
+            log.info("=--=-2=-=-=");
             if (md == null) {
+                md = new ManagementDev();
+                log.info(m.getIp());
                 md.setIp(m.getIp());
+                log.info(md.toString());
                 managementDevDao.save(md);
             }
         }
-        Thread.sleep(2000);
 
+        log.info("=--=-3=-=-=");
         return "device/management";
     }
 

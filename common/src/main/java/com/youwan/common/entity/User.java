@@ -21,12 +21,5 @@ public class User {
     private String type;
 
 
-    protected User() {
-    }
 
-    public User(String username, String password ,String type) {
-        this.username = username;
-        this.password = password;
-        this.type = type;
-    }
 }

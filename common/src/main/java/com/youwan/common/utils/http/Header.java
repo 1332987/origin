@@ -109,6 +109,10 @@ public enum Header {
      */
     ETAG("ETag"),
     /**
+     *token信息
+     */
+    AUTHORIZATION("Authorization"),
+    /**
      * 重定向指示到的URL
      */
     LOCATION("Location");

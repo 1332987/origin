@@ -30,8 +30,9 @@ public class ProjectController {
 
     @RequestMapping("/info")
     public String info(Model model) {
+        if (enterpriseDao.existsById(1L) == false)
+            return "project/info";
         Enterprise enterprise = enterpriseDao.getOne(1L);
-        log.info("0.0" + enterprise.toString());
         log.info("lailelaodi-1");
         model.addAttribute("enterprise", enterprise);
         return "project/info";

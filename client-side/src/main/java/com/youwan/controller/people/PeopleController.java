@@ -1,5 +1,6 @@
 package com.youwan.controller.people;
 
+import com.sun.jna.Native;
 import com.youwan.common.dao.device.ManagementDao;
 import com.youwan.common.dao.people.PersonGetImgDao;
 import com.youwan.common.dao.people.PersonInfoDao;
@@ -7,6 +8,7 @@ import com.youwan.common.dao.people.ProjectTeamDao;
 import com.youwan.common.entity.people.PeopleGetImg;
 import com.youwan.common.entity.people.PersonInfo;
 import com.youwan.common.entity.people.ProjectTeam;
+import com.youwan.common.utils.CLibrary;
 import com.youwan.common.utils.http.HttpUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
@@ -16,6 +18,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import java.nio.ByteBuffer;
+import java.nio.CharBuffer;
+import java.nio.IntBuffer;
+import java.nio.charset.Charset;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -128,5 +134,26 @@ public class PeopleController {
         peopleGetImgDao.save(pgi);
         log.info("deviceKey:==-------------------------" + pgi.toString());
 
+    }
+
+    @RequestMapping("/getIC")
+    @ResponseBody
+    public String getID() {
+
+        CLibrary INSTANCE = (CLibrary) Native.load("Termb", CLibrary.class);
+        System.out.println(INSTANCE.CVR_InitComm(1001));
+
+        System.out.println(INSTANCE.CVR_Authenticate());
+
+        System.out.println(INSTANCE.CVR_Read_Content(1));
+        ByteBuffer byteB = ByteBuffer.allocate(1024);
+        IntBuffer pLen = IntBuffer.allocate(4);
+        System.out.println(INSTANCE.GetPeopleSex(byteB, pLen) + "---" + byteB);
+        Charset charset = Charset.forName("GBK");
+        CharBuffer charBuffer = charset.decode(byteB);
+        log.info(charBuffer.toString());
+        System.out.println(INSTANCE.CVR_CloseComm());
+
+        return "ok";
     }
 }
